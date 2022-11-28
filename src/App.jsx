@@ -1,12 +1,12 @@
 import { GlobalStyles } from "./styles/GlobalStyles";
-import { SideMenu } from "./components/SideMenu";
+import { Main } from "./components/Main";
 
 function App() {
 
 	return (
 		<>
 			<GlobalStyles />
-			<SideMenu />
+			<Main />
 		</>
 	);
 }

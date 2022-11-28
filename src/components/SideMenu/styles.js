@@ -1,17 +1,11 @@
 import styled from "styled-components";
 
 export const SideMenuContainer = styled.div`
-	width:80px;
 	height:100vh;
-	padding:16px 0;
+	padding:16px;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
-
-	img{
-		width:34px;
-		height:34px;
-	}
 `;
 
 export const NavMenuContainer = styled.div`
@@ -25,7 +19,7 @@ export const NavMenuContainer = styled.div`
 	align-items:center;
 	gap:31px;
 
-	& > .icon{
-		width:100%;
+	.icon{
+		font-size:22px;
 	}
 `;
