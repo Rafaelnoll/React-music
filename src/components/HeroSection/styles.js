@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const HeroSectionContainer = styled.div`
+	flex:1;
+	margin-right: 24px;
 	color: #fff;
 	background-color:#609EAF;
 	border-radius:40px;
