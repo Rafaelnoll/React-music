@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const ChartContainer = styled.div`
+	position:relative;
 	background-color:#1A1E1F;
 	border-radius:20px;
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
 	padding:16px;
+
+	@media (max-width:980px) {
+		width:100%;
+		flex-direction:column;
+		align-items:flex-start;
+	}
 `;
 
 export const ChartTexts = styled.div`
@@ -30,6 +37,10 @@ export const ChartTexts = styled.div`
 	span.time{
 		font-size:12px;
 	}
+
+	@media (max-width:980px) {
+		margin: 16px 0;
+	}
 `;
 
 export const ChartLikeButton = styled.button`
@@ -42,4 +53,12 @@ export const ChartLikeButton = styled.button`
 	border-radius:50%;
 	padding:8px;
 	background:transparent;
+
+	@media (max-width:980px) {
+		& {
+			position:absolute;
+			top:10;
+			right:20px;
+		}
+	}
 `;

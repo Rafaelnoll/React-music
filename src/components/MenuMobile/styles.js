@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MobileContainer = styled.div`
-
+	z-index:999;
 	@media (min-width: 980px){
 			display:none;
 	}
@@ -18,9 +18,9 @@ export const MobileButton = styled.button`
 `;
 
 export const MobileMenu = styled.div`
-	position:absolute;
+	position:fixed;
 	background-color:#1A1E1F;
-	width:100vw;
+	width:100%;
 	height:100vh;
 	left:0;
 	top:0;
