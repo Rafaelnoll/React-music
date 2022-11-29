@@ -10,6 +10,12 @@ export const HeroSectionContainer = styled.div`
 	padding: 32px 48px;
 	display:flex;
 	justify-content:space-between;
+
+	@media (max-width:980px) {
+		&{
+			margin:0;
+		}
+	}
 `;
 
 export const TextsHeroSection = styled.div`
@@ -42,6 +48,18 @@ export const TextsHeroSection = styled.div`
 			color: rgba(255,255,255,0.8);
 		}
 	}
+
+	@media (max-width:980px) {
+		span{
+			margin-bottom:46px;
+		}
+
+		.text-container{
+			p{
+				margin-bottom:46px;
+			}
+		}
+	}
 `;
 
 export const HeroSectionImageContainer = styled.div`
@@ -50,7 +68,13 @@ export const HeroSectionImageContainer = styled.div`
 
 	img{
 		position:absolute;
-		top:-30px;
-		right:0px;
+		top:-32px;
+		right:-45px;
+	}
+
+	@media (max-width:980px) {
+		&{
+			display:none;
+		}
 	}
 `;

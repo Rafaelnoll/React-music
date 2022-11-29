@@ -13,11 +13,12 @@ export const MainContent = styled.div`
 		display:flex;
 	}
 
-	.top-charts{
-		flex:1;
+	.charts-list{
+		flex:.8;
 		display:flex;
 		flex-direction:column;
 		justify-content:space-between;
+		gap:16px;
 	}
 
 		h2{
@@ -26,5 +27,15 @@ export const MainContent = styled.div`
 			color:#EFEEE0;
 			margin-bottom:16px;
 		}
+
+@media (max-width: 980px){
+	.top-charts-container{
+		flex-direction:column;
+	}
+
+	.top-charts{
+		margin-top:46px;
+	}
+}
 
 `;
