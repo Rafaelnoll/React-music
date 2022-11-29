@@ -7,5 +7,5 @@ export const MainContainer = styled.div`
 export const MainContent = styled.div`
 	width:100%;
 	margin-right:24px;
-	background-color:red;
+	padding:8px;
 `;
