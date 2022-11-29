@@ -13,7 +13,7 @@ export const HeroSectionContainer = styled.div`
 
 	@media (max-width:980px) {
 		&{
-			margin:0;
+			margin: 48px 0;
 		}
 	}
 `;

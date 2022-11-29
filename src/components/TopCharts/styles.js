@@ -18,7 +18,6 @@ export const TopChartContainer = styled.div`
 		flex-direction:column;
 
 		.top-charts{
-			margin-top: 46px;
 			flex:1;
 		}
 	}

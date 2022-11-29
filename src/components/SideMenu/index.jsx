@@ -3,11 +3,9 @@ import {
 	SideMenuContainer,
 } from "./styles";
 import Logo from "../../assets/imgs/logo.svg";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome,AiOutlineUser } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
-import { BiRadio } from "react-icons/bi";
-import { AiOutlineUser } from "react-icons/ai";
-import { BiExit } from "react-icons/bi";
+import { BiRadio ,BiExit} from "react-icons/bi";
 import { theme } from "../../styles/theme";
 import { MenuMobile } from "../MenuMobile";
 

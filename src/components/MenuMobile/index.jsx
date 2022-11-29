@@ -1,12 +1,9 @@
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { MobileButton, MobileContainer, MobileMenu } from "./styles";
 import { theme } from "../../styles/theme";
 import { useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
-import { BiRadio } from "react-icons/bi";
-import { AiOutlineUser } from "react-icons/ai";
-import { BiExit } from "react-icons/bi";
+import { BiRadio, BiExit } from "react-icons/bi";
 
 export function MenuMobile() {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
