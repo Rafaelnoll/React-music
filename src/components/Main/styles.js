@@ -2,6 +2,12 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
 	display:flex;
+
+	@media (max-width: 980px){
+		& {
+			flex-direction:column;
+		}
+	}
 `;
 
 export const MainContent = styled.div`
@@ -38,4 +44,8 @@ export const MainContent = styled.div`
 	}
 }
 
+`;
+
+export const MobileContainer = styled.div`
+	background-color:red;
 `;

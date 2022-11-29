@@ -43,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: GeneralSans, sans-serif;
+		text-decoration:none;
   }
   body {
     background: #1D2123;
