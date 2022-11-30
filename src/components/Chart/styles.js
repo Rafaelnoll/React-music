@@ -8,6 +8,12 @@ export const ChartContainer = styled.div`
 	justify-content:space-between;
 	align-items:center;
 	padding:16px;
+	cursor: pointer;
+	transition: opacity .1s ease-in;
+
+	&:active{
+		opacity:0.6;
+	}
 
 	@media (max-width:980px) {
 		width:100%;

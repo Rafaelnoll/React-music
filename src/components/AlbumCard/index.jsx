@@ -1,12 +1,18 @@
 import { AlbumCardContainer } from "./styles";
-import AlbumImage from "../../assets/imgs/albumImage.svg";
+import P from "prop-types";
 
-export function AlbumCard() {
+export function AlbumCard({ albumImage, name, artist }) {
 	return (
 		<AlbumCardContainer>
-			<img src={AlbumImage} />
-			<strong>Life in a bubble</strong>
-			<span>The van</span>
+			<img src={albumImage} />
+			<strong>{name}</strong>
+			<span>{artist}</span>
 		</AlbumCardContainer>
 	);
 }
+
+AlbumCard.propTypes = {
+	albumImage: P.node.isRequired,
+	name: P.string.isRequired,
+	artist: P.string.isRequired,
+};

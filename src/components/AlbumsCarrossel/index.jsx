@@ -3,7 +3,46 @@ import { AlbumsContainer } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import P from "prop-types";
 import "swiper/css";
+import AlbumImage from "../../assets/imgs/albumImage.svg";
 
+const albums = [
+	{
+		id: 4213654,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+	{
+		id: 42133654,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+	{
+		id: 3413654,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+	{
+		id: 13654,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+	{
+		id: 4213,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+	{
+		id: 454,
+		image: AlbumImage,
+		name: "Life in a bubble",
+		artist: "The van"
+	},
+];
 
 const swiperBreakPoints = {
 	// when window width is >= 200px
@@ -37,16 +76,15 @@ export function AlbumsCarrossel({ label }) {
 					slidesPerView={3}
 					breakpoints={swiperBreakPoints}
 				>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
-					<SwiperSlide><AlbumCard /></SwiperSlide>
+					{albums.map(album => (
+						<SwiperSlide key={album.id}>
+							<AlbumCard
+								albumImage={album.image}
+								name={album.name}
+								artist={album.artist}
+							/>
+						</SwiperSlide>
+					))}
 				</Swiper>
 			</AlbumsContainer >
 		</>
