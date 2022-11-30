@@ -52,4 +52,13 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     font-size: 1rem;
   }
+
+	input,
+	textarea,
+	button,
+	select,
+	a,
+	div {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
 `;
