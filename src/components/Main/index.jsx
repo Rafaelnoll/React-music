@@ -11,7 +11,7 @@ export function Main() {
 			<MainContent>
 				<TopNav />
 				<TopCharts />
-				<AlbumsCarrossel />
+				<AlbumsCarrossel label="New releases" />
 			</MainContent>
 		</MainContainer>
 	);

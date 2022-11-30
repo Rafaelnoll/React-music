@@ -1,6 +1,7 @@
 import { AlbumCard } from "../AlbumCard";
 import { AlbumsContainer } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
+import P from "prop-types";
 import "swiper/css";
 
 
@@ -27,12 +28,11 @@ const swiperBreakPoints = {
 	},
 };
 
-export function AlbumsCarrossel() {
-
+export function AlbumsCarrossel({ label }) {
 	return (
 		<>
 			<AlbumsContainer>
-				<h2>New releases</h2>
+				<h2>{label}</h2>
 				<Swiper
 					slidesPerView={3}
 					breakpoints={swiperBreakPoints}
@@ -52,3 +52,7 @@ export function AlbumsCarrossel() {
 		</>
 	);
 }
+
+AlbumsCarrossel.propTypes = {
+	label: P.string.isRequired,
+};

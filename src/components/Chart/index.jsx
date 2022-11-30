@@ -1,15 +1,15 @@
 import { ChartContainer, ChartLikeButton, ChartTexts } from "./styles";
-import ChartImage from "../../assets/imgs/chart-image.svg";
+import P from "prop-types";
 import { AiOutlineHeart } from "react-icons/ai";
 
-export function Chart() {
+export function Chart({ chartImage, name, artist, time }) {
 	return (
 		<ChartContainer>
-			<img src={ChartImage} />
+			<img src={chartImage} />
 			<ChartTexts>
-				<strong>Golden age of 80s</strong>
-				<span className="artist">Sean swadder</span>
-				<span className="time">2:34:45</span>
+				<strong>{name}</strong>
+				<span className="artist">{artist}</span>
+				<span className="time">{time}</span>
 			</ChartTexts>
 			<ChartLikeButton>
 				<AiOutlineHeart />
@@ -17,3 +17,10 @@ export function Chart() {
 		</ChartContainer>
 	);
 }
+
+Chart.propTypes = {
+	chartImage: P.node.isRequired,
+	name: P.string.isRequired,
+	artist: P.string.isRequired,
+	time: P.string.isRequired,
+};
