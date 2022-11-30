@@ -14,4 +14,5 @@ export const MainContent = styled.div`
 	width:100%;
 	margin-right:24px;
 	padding:8px;
+	overflow:hidden;
 `;
