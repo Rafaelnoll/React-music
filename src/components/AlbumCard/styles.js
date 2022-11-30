@@ -5,6 +5,12 @@ export const AlbumCardContainer = styled.div`
 	flex-direction:column;
 	max-width: 180px;
 	gap:5px;
+	cursor: pointer;
+	transition: opacity .1s ease-in;
+
+	&:active{
+		opacity:0.6;
+	}
 
 	strong{
 		color:#fff;
