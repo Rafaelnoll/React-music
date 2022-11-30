@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeroSectionContainer = styled.div`
+	max-width:900px;
 	flex:1;
 	margin-right: 24px;
 	color: #fff;
