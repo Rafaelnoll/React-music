@@ -5,8 +5,7 @@ export const TopNavContainer = styled.div`
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	background-color:#1D2123;
-`;
+	`;
 
 export const SearchIconBox = styled.div`
 	width:40px;
@@ -15,15 +14,16 @@ export const SearchIconBox = styled.div`
 	justify-content:center;
 	cursor: pointer;
 	font-size:22px;
-`;
+	`;
 
 export const TopNavInput = styled.input`
 	flex:1;
 	height:100%;
 	padding: 26px 4px;
 	border:none;
-	background-color:#1D2123;
+	background:transparent;
 	font-size:16px;
+	font-weight:800;
 	color:white;
 	border:0;
 	&:focus{
