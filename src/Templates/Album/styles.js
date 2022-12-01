@@ -41,6 +41,27 @@ export const AlbumTemplateHeader = styled.div`
 			font-weight:700;
 		}
 	}
+
+	@media (max-width:980px) {
+		flex-direction:column;
+		align-items:center;
+		justify-content:center;
+		padding:0 8px;
+
+		.image-box{
+			display:flex;
+			justify-content:center;
+			margin:0;
+
+			img{
+				max-width:100%;
+			}
+		}
+
+		.text-box{
+		max-width:100%;
+		}
+	}
 `;
 
 export const ActionButtons = styled.div`
@@ -70,8 +91,18 @@ export const ActionButtons = styled.div`
 	}
 
 	button:active{
-
 		opacity:0.6;
+	}
+
+	@media (max-width:980px){
+		button{
+			width:100%;
+		}
+	}
+
+	@media (max-width:550px){
+		flex-wrap:wrap;
+		gap:16px;
 	}
 `;
 
