@@ -1,4 +1,5 @@
 import { Main } from "../../components/Main";
+import { MusicsList } from "../../components/MusicsList";
 import {
 	AlbumContent,
 	AlbumTemplate,
@@ -23,14 +24,15 @@ export function Album() {
 						<div className="text-box">
 							<h1>Tommow tunes</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis</p>
-							<spa>64 songs - 16 hrs+</spa>
+							<span>64 songs - 16 hrs+</span>
 							<ActionButtons>
-								<button><AiFillPlayCircle className="icon"/> Play all</button>
-								<button><BsMusicPlayer className="icon"/> Add to collection</button>
-								<button><AiOutlineHeart className="icon-red"/></button>
+								<button><AiFillPlayCircle className="icon" /> Play all</button>
+								<button><BsMusicPlayer className="icon" /> Add to collection</button>
+								<button><AiOutlineHeart className="icon-red" /></button>
 							</ActionButtons>
 						</div>
 					</AlbumTemplateHeader>
+					<MusicsList />
 				</AlbumContent>
 			</Main>
 		</AlbumTemplate>
