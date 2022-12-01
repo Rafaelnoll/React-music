@@ -1,22 +1,28 @@
 import { MusicCardContainer, MusicCardOptions, MusicCardTexts } from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { SlOptionsVertical } from "react-icons/sl";
+import P from "prop-types";
 
-const testImage = "https://i.scdn.co/image/ab67616d0000b27367c738a703dc979f5c3c52ef";
-
-export function MusicCard() {
+export function MusicCard({ image, name, artist, time }) {
 	return (
 		<MusicCardContainer>
-			<img src={testImage} />
+			<img src={image} />
 			<AiOutlineHeart className="like-button" />
 			<MusicCardTexts>
-				<span>Let me love you - Krisx</span>
-				<span>Single</span>
+				<span>{name}</span>
+				<span>{artist}</span>
 			</MusicCardTexts>
 			<MusicCardOptions>
-				<span>4:17</span>
-				<SlOptionsVertical className="option-button"/>
+				<span>{time}</span>
+				<SlOptionsVertical className="option-button" />
 			</MusicCardOptions>
 		</MusicCardContainer>
 	);
 }
+
+MusicCard.propTypes = {
+	image: P.node.isRequired,
+	name: P.string.isRequired,
+	artist: P.string.isRequired,
+	time: P.string.isRequired,
+};

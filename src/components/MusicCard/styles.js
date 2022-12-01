@@ -32,20 +32,22 @@ export const MusicCardContainer = styled.div`
 
 export const MusicCardTexts = styled.div`
 	display:flex;
-	justify-content:space-around;
+	justify-content:space-between;
 	width:100%;
+	margin-right:40px;
 
 	@media (max-width:980px){
 		flex-direction:column;
 		gap:8px;
 		align-items:flex-start;
+		margin:0;
 	}
 `;
 
 export const MusicCardOptions = styled.div`
 	width:100%;
 	display:flex;
-	justify-content:space-around;
+	justify-content:space-between;
 
 	.option-button{
 		color:#FACD66;
