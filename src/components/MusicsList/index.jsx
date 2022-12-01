@@ -5,6 +5,17 @@ export function MusicsList() {
 	return (
 		<MusicsListContainer>
 			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
+			<MusicCard />
 		</MusicsListContainer>
 	);
 }

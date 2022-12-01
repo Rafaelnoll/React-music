@@ -11,6 +11,7 @@ export const MusicCardContainer = styled.div`
 	border-radius: 16px;
 	padding:8px 12px;
 	gap:24px;
+	cursor: pointer;
 
 	img{
 		max-width:56px;
@@ -21,12 +22,24 @@ export const MusicCardContainer = styled.div`
 		font-size:3em;
 		cursor: pointer;
 	}
+
+	@media (max-width:980px){
+		.like-button{
+			display:none;
+		}
+	}
 `;
 
 export const MusicCardTexts = styled.div`
 	display:flex;
 	justify-content:space-around;
 	width:100%;
+
+	@media (max-width:980px){
+		flex-direction:column;
+		gap:8px;
+		align-items:flex-start;
+	}
 `;
 
 export const MusicCardOptions = styled.div`
@@ -37,5 +50,11 @@ export const MusicCardOptions = styled.div`
 	.option-button{
 		color:#FACD66;
 		cursor: pointer;
+	}
+
+	@media (max-width:980px){
+		flex-direction:column-reverse;
+		gap:8px;
+		align-items:flex-end;
 	}
 `;
