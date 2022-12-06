@@ -8,6 +8,10 @@ export const AlbumCardContainer = styled.div`
 	cursor: pointer;
 	transition: opacity .1s ease-in;
 
+	img{
+		border-radius:24px;
+	}
+
 	&:active{
 		opacity:0.6;
 	}
