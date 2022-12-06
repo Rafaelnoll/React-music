@@ -1,12 +1,11 @@
 import { AlbumCardContainer } from "./styles";
 import P from "prop-types";
 
-export function AlbumCard({ albumImage, name, artist }) {
+export function AlbumCard({ albumImage, name }) {
 	return (
 		<AlbumCardContainer>
 			<img src={albumImage} />
 			<strong>{name}</strong>
-			<span>{artist}</span>
 		</AlbumCardContainer>
 	);
 }
@@ -14,5 +13,4 @@ export function AlbumCard({ albumImage, name, artist }) {
 AlbumCard.propTypes = {
 	albumImage: P.node.isRequired,
 	name: P.string.isRequired,
-	artist: P.string.isRequired,
 };

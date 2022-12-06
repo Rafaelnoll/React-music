@@ -1,48 +1,10 @@
+import { useEffect, useState } from "react";
 import { AlbumCard } from "../AlbumCard";
 import { AlbumsContainer } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import P from "prop-types";
 import "swiper/css";
-import AlbumImage from "../../assets/imgs/albumImage.svg";
-
-const albums = [
-	{
-		id: 4213654,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-	{
-		id: 42133654,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-	{
-		id: 3413654,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-	{
-		id: 13654,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-	{
-		id: 4213,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-	{
-		id: 454,
-		image: AlbumImage,
-		name: "Life in a bubble",
-		artist: "The van"
-	},
-];
+import api from "../../api/";
 
 const swiperBreakPoints = {
 	// when window width is >= 200px
@@ -68,6 +30,23 @@ const swiperBreakPoints = {
 };
 
 export function AlbumsCarrossel({ label }) {
+	const [albums, setAlbums] = useState([]);
+	console.log(albums);
+
+	useEffect(() => {
+		api.get("/albums")
+			.then((response) => {
+				const albums = response.data.public_playlists;
+				console.log(albums);
+				setAlbums(albums);
+			})
+			.catch((error) => {
+				if (error) {
+					return;
+				}
+			});
+	}, []);
+
 	return (
 		<>
 			<AlbumsContainer>
@@ -76,12 +55,11 @@ export function AlbumsCarrossel({ label }) {
 					slidesPerView={3}
 					breakpoints={swiperBreakPoints}
 				>
-					{albums.map(album => (
+					{albums.map((album) => (
 						<SwiperSlide key={album.id}>
 							<AlbumCard
-								albumImage={album.image}
 								name={album.name}
-								artist={album.artist}
+								albumImage={album.image}
 							/>
 						</SwiperSlide>
 					))}
