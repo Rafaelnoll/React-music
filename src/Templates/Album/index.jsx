@@ -9,32 +9,51 @@ import {
 import { AiFillPlayCircle } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
-
-const testImage = "https://i.scdn.co/image/ab67616d0000b27367c738a703dc979f5c3c52ef";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getAlbum } from "../../utils/getAlbum";
 
 export function Album() {
+	const [album, setAlbum] = useState({});
+	const [isLoaded, setIsLoaded] = useState(false);
+	const { id } = useParams();
+
+	useEffect(() => {
+		getAlbum(id)
+			.then((response) => {
+				setAlbum(response);
+				setIsLoaded(true);
+			})
+			.catch((error) => {
+				if (error) return;
+			});
+
+	}, []);
+
 	return (
-		<AlbumTemplate backgroundImage={testImage}>
-			<Main>
-				<AlbumContent>
-					<AlbumTemplateHeader>
-						<div className="image-box">
-							<img src={testImage} />
-						</div>
-						<div className="text-box">
-							<h1>Tommow tunes</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis</p>
-							<span>64 songs - 16 hrs+</span>
-							<ActionButtons>
-								<button><AiFillPlayCircle className="icon" /> Play all</button>
-								<button><BsMusicPlayer className="icon" /> Add to collection</button>
-								<button><AiOutlineHeart className="icon-red" /></button>
-							</ActionButtons>
-						</div>
-					</AlbumTemplateHeader>
-					<MusicsList />
-				</AlbumContent>
-			</Main>
-		</AlbumTemplate>
+		isLoaded && (
+			<AlbumTemplate backgroundImage={album.image.url}>
+				<Main>
+					<AlbumContent>
+						<AlbumTemplateHeader>
+							<div className="image-box">
+								<img src={album.image.url} />
+							</div>
+							<div className="text-box">
+								<h1>{album.name}</h1>
+								<p>{album.description}</p>
+								<span>{album.totalOfTracks} songs - {album.duration} hrs+</span>
+								<ActionButtons>
+									<button><AiFillPlayCircle className="icon" /> Play all</button>
+									<button><BsMusicPlayer className="icon" /> Add to collection</button>
+									<button><AiOutlineHeart className="icon-red" /></button>
+								</ActionButtons>
+							</div>
+						</AlbumTemplateHeader>
+						<MusicsList albumId={id} />
+					</AlbumContent>
+				</Main>
+			</AlbumTemplate>
+		)
 	);
 }

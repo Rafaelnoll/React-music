@@ -11,7 +11,7 @@ function App() {
 			<GlobalStyles />
 			<BrowserRouter>
 				<Routes>
-					<Route path="/album" element={<Album />} />
+					<Route path="/album/:id" element={<Album />} />
 					<Route path="/collections" element={<Collections />} />
 					<Route path="/" element={<Home />} />
 				</Routes>

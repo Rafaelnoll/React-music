@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AlbumTemplate = styled.div`
 	background-image:
 	linear-gradient(180deg, rgba(29, 33, 35, .3) 0%, #1D2123 50%),
-	url(https://i.scdn.co/image/ab67616d0000b27367c738a703dc979f5c3c52ef);
+	url(${({ backgroundImage }) => backgroundImage});
 	background-repeat:no-repeat;
 	background-size:cover;
 `;
