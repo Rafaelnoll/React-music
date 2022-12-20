@@ -32,12 +32,12 @@ export function Album() {
 
 	return (
 		isLoaded && (
-			<AlbumTemplate backgroundImage={album.image.url}>
+			<AlbumTemplate backgroundImage={album.image}>
 				<Main>
 					<AlbumContent>
 						<AlbumTemplateHeader>
 							<div className="image-box">
-								<img src={album.image.url} />
+								<img src={album.image} />
 							</div>
 							<div className="text-box">
 								<h1>{album.name}</h1>
@@ -50,7 +50,7 @@ export function Album() {
 								</ActionButtons>
 							</div>
 						</AlbumTemplateHeader>
-						<MusicsList albumId={id} />
+						<MusicsList tracks={album.tracks.items} />
 					</AlbumContent>
 				</Main>
 			</AlbumTemplate>

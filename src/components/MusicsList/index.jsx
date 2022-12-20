@@ -1,32 +1,19 @@
-import { useEffect, useState } from "react";
-import { getAlbumTracks } from "../../utils/getAlbumTracks";
 import { MusicCard } from "../MusicCard";
 import { MusicsListContainer } from "./styles";
 import P from "prop-types";
+import { ToMinutes } from "../../utils/toMinutes";
 
-export function MusicsList({ albumId }) {
-	const [musicTracks, setMusicTracks] = useState([]);
-
-	useEffect(() => {
-		getAlbumTracks(albumId)
-			.then((response) => setMusicTracks(response))
-			.catch((error) => {
-				if (error) return;
-			});
-
-
-	}, []);
-
+export function MusicsList({ tracks = [] }) {
 	return (
 		<MusicsListContainer>
-			{musicTracks.map(music => (
+			{tracks.map(({ track }) => (
 				<MusicCard
-					key={music.id}
-					image={music.image}
-					name={music.name}
-					artist={music.artist}
-					duration={music.duration}
-					previewUrl={music.previewUrl}
+					key={track.id}
+					image={track.album.images[0].url}
+					name={track.name}
+					artist={track.album.artists[0].name}
+					duration={ToMinutes(track.duration_ms)}
+					previewUrl={track.preview_url}
 				/>
 			))}
 		</MusicsListContainer>
@@ -34,5 +21,5 @@ export function MusicsList({ albumId }) {
 }
 
 MusicsList.propTypes = {
-	albumId: P.string.isRequired,
+	tracks: P.array,
 };
