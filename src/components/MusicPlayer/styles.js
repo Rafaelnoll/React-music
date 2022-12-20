@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const MusicPlayerContainer = styled.div`
 	display:flex;
 	justify-content:space-between;
-	position:absolute;
+	position:fixed;
 	width:100%;
 	bottom: 0;
 	z-index:999;
-	background:rgba(16, 16, 16, 0.51);
+	background:rgba(16, 16, 16, 0.8);
 	padding:24px 16px;
 `;
 

@@ -4,15 +4,17 @@ import P from "prop-types";
 
 const initialState = {
 	currentTrack: "",
+	isPaused: true,
 };
 
 function reducer(state, action) {
 	switch (action.type) {
 	case "play":
-		return { currentTrack: action.track };
+		return { currentTrack: action.track, isPaused: false };
+	case "clear":
+		return initialState;
 	default:
-		console.log("deu ruim");
-		break;
+		throw new Error("Error in reducer");
 	}
 }
 

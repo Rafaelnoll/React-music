@@ -9,9 +9,23 @@ import {
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { BsFillVolumeUpFill } from "react-icons/bs";
+import { useState } from "react";
 
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
+	const [isPaused, setPaused] = useState(false);
+
+	function playTrack() {
+		const audioRef = state.currentTrack.track;
+
+		if (!isPaused) {
+			audioRef.play();
+			return;
+		}
+
+		setPaused(true);
+		audioRef.pause();
+	}
 
 	return (
 		<MusicPlayerContainer>
@@ -25,7 +39,7 @@ export function MusicPlayer() {
 			<TrackControls>
 				<div className="control-buttons">
 					<button><BiSkipPrevious /></button>
-					<button className="play-button"><AiFillPlayCircle /></button>
+					<button onClick={playTrack} className="play-button"><AiFillPlayCircle /></button>
 					<button><BiSkipNext /></button>
 				</div>
 				<div className="progress-bar-box">
@@ -33,9 +47,9 @@ export function MusicPlayer() {
 				</div>
 			</TrackControls>
 			<VolumeTrack>
-				<BsFillVolumeUpFill className="volume-icon"/>
+				<BsFillVolumeUpFill className="volume-icon" />
 				<div className="volume-bar-box">
-					<div className="volume-bar"/>
+					<div className="volume-bar" />
 				</div>
 			</VolumeTrack>
 		</MusicPlayerContainer>
