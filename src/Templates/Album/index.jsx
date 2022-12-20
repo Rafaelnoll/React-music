@@ -12,6 +12,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAlbum } from "../../utils/getAlbum";
+import { toAlbumTime } from "../../utils/toAlbumTime";
 
 export function Album() {
 	const [album, setAlbum] = useState({});
@@ -42,7 +43,7 @@ export function Album() {
 							<div className="text-box">
 								<h1>{album.name}</h1>
 								<p>{album.description}</p>
-								<span>{album.totalOfTracks} songs - {album.duration} hrs+</span>
+								<span>{album.tracks.total} songs - {toAlbumTime(album.tracks)}</span>
 								<ActionButtons>
 									<button><AiFillPlayCircle className="icon" /> Play all</button>
 									<button><BsMusicPlayer className="icon" /> Add to collection</button>
