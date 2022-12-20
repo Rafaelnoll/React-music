@@ -4,6 +4,7 @@ import { Home } from "./Templates/Home";
 import { Album } from "./Templates/Album";
 import { Collections } from "./Templates/Collections";
 import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
+import { MusicPlayer } from "./components/MusicPlayer";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/" element={<Home />} />
 					</Routes>
+					<MusicPlayer />
 				</MusicPlayerProvider>
 			</BrowserRouter>
 		</>

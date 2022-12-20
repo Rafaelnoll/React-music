@@ -6,10 +6,18 @@ import { useContext } from "react";
 import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 
 export function MusicCard({ image, name, artist, duration, previewUrl }) {
-	const { playerDispatch } = useContext(MusicPlayerContext);
+	const {state, playerDispatch } = useContext(MusicPlayerContext);
 
 	function playTrack() {
-		playerDispatch({ type: "play", track: previewUrl });
+		playerDispatch({
+			type: "play", track: {
+				previewUrl,
+				image,
+				name,
+				artist,
+			}
+		});
+		console.log(state);
 		const track = new Audio(previewUrl);
 		track.play();
 	}
