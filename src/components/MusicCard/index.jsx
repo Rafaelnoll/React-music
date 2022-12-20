@@ -2,16 +2,20 @@ import { MusicCardContainer, MusicCardOptions, MusicCardTexts } from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { SlOptionsVertical } from "react-icons/sl";
 import P from "prop-types";
+import { useContext } from "react";
+import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 
 export function MusicCard({ image, name, artist, duration, previewUrl }) {
+	const { playerDispatch } = useContext(MusicPlayerContext);
 
-	function playTrack(url) {
-		const audio = new Audio(url);
-		audio.play();
+	function playTrack() {
+		playerDispatch({ type: "play", track: previewUrl });
+		const track = new Audio(previewUrl);
+		track.play();
 	}
 
 	return (
-		<MusicCardContainer onClick={() => playTrack(previewUrl)}>
+		<MusicCardContainer onClick={playTrack}>
 			<img src={image} />
 			<AiOutlineHeart className="like-button" />
 			<MusicCardTexts>
