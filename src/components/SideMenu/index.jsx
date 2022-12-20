@@ -2,25 +2,28 @@ import {
 	NavMenuContainer,
 	SideMenuContainer,
 } from "./styles";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/imgs/logo.svg";
-import { AiOutlineHome,AiOutlineUser } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
-import { BiRadio ,BiExit} from "react-icons/bi";
+import { BiRadio, BiExit } from "react-icons/bi";
 import { theme } from "../../styles/theme";
 import { MenuMobile } from "../MenuMobile";
 
 export function SideMenu() {
 	return (
 		<SideMenuContainer>
-			<img src={Logo} />
+			<Link to="/">
+				<img src={Logo} />
+			</Link>
 			<NavMenuContainer>
-				<a href="/"><AiOutlineHome className="icon" color={theme.iconColor} /></a>
-				<a href="/"><BsMusicPlayer className="icon" color={theme.iconColor} /></a>
-				<a href="/"><BiRadio className="icon" color={theme.iconColor} /></a>
+				<Link to="/"><AiOutlineHome className="icon" color={theme.iconColor} /></Link>
+				<Link to="/"><BsMusicPlayer className="icon" color={theme.iconColor} /></Link>
+				<Link to="/"><BiRadio className="icon" color={theme.iconColor} /></Link>
 			</NavMenuContainer>
 			<NavMenuContainer>
-				<a href="/"><AiOutlineUser className="icon" color={theme.iconColor} /></a>
-				<a href="/"><BiExit className="icon" color={theme.iconColor} /></a>
+				<Link to="/"><AiOutlineUser className="icon" color={theme.iconColor} /></Link>
+				<Link to="/"><BiExit className="icon" color={theme.iconColor} /></Link>
 			</NavMenuContainer>
 
 			<MenuMobile />
