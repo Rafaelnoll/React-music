@@ -5,4 +5,5 @@ export const MusicsListContainer = styled.div`
 	flex-direction:column;
 	margin:48px 0;
 	gap:12px;
+	margin-bottom:120px;
 `;
