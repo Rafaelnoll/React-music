@@ -13,6 +13,9 @@ import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { BsFillVolumeUpFill } from "react-icons/bs";
 import { useState } from "react";
 
+// Volume percent
+const volumeDefaultValue = localStorage.getItem("user-volume") * 100;
+
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
 	const [isPlaying, setIsPlaying] = useState(true);
@@ -26,6 +29,9 @@ export function MusicPlayer() {
 			if (progressBar.current) {
 				const audioRef = state.currentTrack.track;
 				const volume = volumeBar.current.value / 100;
+
+				localStorage.setItem("user-volume", volume);
+
 				audioRef.volume = volume;
 
 				const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
@@ -95,7 +101,7 @@ export function MusicPlayer() {
 				<VolumeTrack>
 					<BsFillVolumeUpFill className="volume-icon" />
 					<div className="volume-bar-box">
-						<VolumeBar ref={volumeBar} type="range" defaultValue={100}/>
+						<VolumeBar ref={volumeBar} type="range" defaultValue={volumeDefaultValue} />
 					</div>
 				</VolumeTrack>
 			</MusicPlayerContainer>

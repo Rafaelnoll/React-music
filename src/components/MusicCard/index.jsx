@@ -26,6 +26,15 @@ export function MusicCard({ image, name, artist, duration, previewUrl }) {
 				artist,
 			}
 		});
+
+		const userVolume = localStorage.getItem("user-volume");
+
+		if(userVolume){
+			audioRef.current.volume = userVolume;
+			audioRef.current.play();
+			return;
+		}
+
 		audioRef.current.play();
 	}
 
