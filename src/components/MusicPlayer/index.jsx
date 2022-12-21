@@ -8,13 +8,13 @@ import {
 	VolumeTrack,
 } from "./styles";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
-import { AiFillPlayCircle } from "react-icons/ai";
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { BsFillVolumeUpFill } from "react-icons/bs";
 import { useState } from "react";
 
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
-	const [isPaused, setPaused] = useState(false);
+	const [isPlaying, setPlaying] = useState(true);
 	const progressBar = useRef(false);
 
 	useEffect(() => {
@@ -47,18 +47,18 @@ export function MusicPlayer() {
 
 		}, 500);
 
-	}, [state, isPaused]);
+	}, [state, isPlaying]);
 
 	function playTrack() {
 		const audioRef = state.currentTrack.track;
 
-		if (isPaused) {
+		if (!isPlaying) {
 			audioRef.play();
-			setPaused(false);
+			setPlaying(true);
 			return;
 		}
 
-		setPaused(true);
+		setPlaying(false);
 		audioRef.pause();
 	}
 
@@ -75,7 +75,9 @@ export function MusicPlayer() {
 				<TrackControls>
 					<div className="control-buttons">
 						<button><BiSkipPrevious /></button>
-						<button onClick={playTrack} className="play-button"><AiFillPlayCircle /></button>
+						<button onClick={playTrack} className="play-button">
+							{isPlaying ? <AiFillPauseCircle /> : <AiFillPlayCircle />}
+						</button>
 						<button><BiSkipNext /></button>
 					</div>
 					<ProgressBar>
