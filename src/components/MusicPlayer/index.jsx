@@ -5,7 +5,7 @@ import {
 	ProgressBar,
 	TrackControls,
 	TrackInfo,
-	VolumeTrack
+	VolumeTrack,
 } from "./styles";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
 import { AiFillPlayCircle } from "react-icons/ai";
@@ -15,29 +15,36 @@ import { useState } from "react";
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
 	const [isPaused, setPaused] = useState(false);
-	const progressBar = useRef();
+	const progressBar = useRef(false);
 
 	useEffect(() => {
 
 		const progressBarPercent = setInterval(() => {
 
-			const audioRef = state.currentTrack.track;
-			const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
-			progressBar.current.style.width = `${percentProgressBar}%`;
+			if (progressBar.current) {
+				const audioRef = state.currentTrack.track;
+				const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
+				progressBar.current.style.width = `${percentProgressBar}%`;
 
-			if (audioRef && audioRef.paused) {
-				clearInterval(progressBarPercent);
-			}
-
-			if (percentProgressBar === 100 || isNaN(percentProgressBar)) {
-				clearInterval(progressBarPercent);
-
-				if (audioRef) {
-					audioRef.currentTime = 0;
+				if (audioRef && audioRef.paused) {
+					clearInterval(progressBarPercent);
 				}
 
-				progressBar.current.style.width = "0%";
+				if (percentProgressBar === 100 || isNaN(percentProgressBar)) {
+					clearInterval(progressBarPercent);
+
+					if (audioRef) {
+						audioRef.currentTime = 0;
+					}
+
+					progressBar.current.style.width = "0%";
+				}
+
+				return;
 			}
+
+			clearInterval(progressBarPercent);
+
 		}, 500);
 
 	}, [state, isPaused]);
@@ -56,33 +63,35 @@ export function MusicPlayer() {
 	}
 
 	return (
-		<MusicPlayerContainer>
-			<TrackInfo>
-				<img src={state.currentTrack.image} />
-				<div className="track-texts">
-					<strong>{state.currentTrack.name}</strong>
-					<span>{state.currentTrack.artist}</span>
-				</div>
-			</TrackInfo>
-			<TrackControls>
-				<div className="control-buttons">
-					<button><BiSkipPrevious /></button>
-					<button onClick={playTrack} className="play-button"><AiFillPlayCircle /></button>
-					<button><BiSkipNext /></button>
-				</div>
-				<ProgressBar>
-					<div ref={progressBar} className="track-progress-bar" />
-				</ProgressBar>
-				<div className="progress-bar-box">
-					<div className="progress-bar" />
-				</div>
-			</TrackControls>
-			<VolumeTrack>
-				<BsFillVolumeUpFill className="volume-icon" />
-				<div className="volume-bar-box">
-					<div className="volume-bar" />
-				</div>
-			</VolumeTrack>
-		</MusicPlayerContainer>
+		state.currentTrack && (
+			<MusicPlayerContainer>
+				<TrackInfo>
+					<img src={state.currentTrack.image} />
+					<div className="track-texts">
+						<strong>{state.currentTrack.name}</strong>
+						<span>{state.currentTrack.artist}</span>
+					</div>
+				</TrackInfo>
+				<TrackControls>
+					<div className="control-buttons">
+						<button><BiSkipPrevious /></button>
+						<button onClick={playTrack} className="play-button"><AiFillPlayCircle /></button>
+						<button><BiSkipNext /></button>
+					</div>
+					<ProgressBar>
+						<div ref={progressBar} className="track-progress-bar" />
+					</ProgressBar>
+					<div className="progress-bar-box">
+						<div className="progress-bar" />
+					</div>
+				</TrackControls>
+				<VolumeTrack>
+					<BsFillVolumeUpFill className="volume-icon" />
+					<div className="volume-bar-box">
+						<div className="volume-bar" />
+					</div>
+				</VolumeTrack>
+			</MusicPlayerContainer>
+		)
 	);
 }
