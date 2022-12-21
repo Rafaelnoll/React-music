@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Main } from "../../components/Main";
 import { MusicsList } from "../../components/MusicsList";
 import {
@@ -17,6 +18,7 @@ export function Album() {
 	const [album, setAlbum] = useState({});
 	const [isLoaded, setIsLoaded] = useState(false);
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getAlbum(id)
@@ -25,7 +27,10 @@ export function Album() {
 				setIsLoaded(true);
 			})
 			.catch((error) => {
-				if (error) return;
+				if (error) {
+					navigate("/*");
+					return;
+				}
 			});
 
 	}, []);
