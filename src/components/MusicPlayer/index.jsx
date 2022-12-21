@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 import {
 	MusicPlayerContainer,
+	ProgressBar,
 	TrackControls,
 	TrackInfo,
 	VolumeTrack
@@ -14,12 +15,39 @@ import { useState } from "react";
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
 	const [isPaused, setPaused] = useState(false);
+	const progressBar = useRef();
+
+	useEffect(() => {
+
+		const progressBarPercent = setInterval(() => {
+
+			const audioRef = state.currentTrack.track;
+			const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
+			progressBar.current.style.width = `${percentProgressBar}%`;
+
+			if (audioRef && audioRef.paused) {
+				clearInterval(progressBarPercent);
+			}
+
+			if (percentProgressBar === 100 || isNaN(percentProgressBar)) {
+				clearInterval(progressBarPercent);
+
+				if (audioRef) {
+					audioRef.currentTime = 0;
+				}
+
+				progressBar.current.style.width = "0%";
+			}
+		}, 500);
+
+	}, [state, isPaused]);
 
 	function playTrack() {
 		const audioRef = state.currentTrack.track;
 
-		if (!isPaused) {
+		if (isPaused) {
 			audioRef.play();
+			setPaused(false);
 			return;
 		}
 
@@ -42,6 +70,9 @@ export function MusicPlayer() {
 					<button onClick={playTrack} className="play-button"><AiFillPlayCircle /></button>
 					<button><BiSkipNext /></button>
 				</div>
+				<ProgressBar>
+					<div ref={progressBar} className="track-progress-bar" />
+				</ProgressBar>
 				<div className="progress-bar-box">
 					<div className="progress-bar" />
 				</div>

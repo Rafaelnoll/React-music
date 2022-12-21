@@ -7,7 +7,7 @@ export const MusicPlayerContainer = styled.div`
 	width:100%;
 	bottom: 0;
 	z-index:999;
-	background:rgba(16, 16, 16, 0.8);
+	background:rgba(16, 16, 16, .9);
 	padding:24px 16px;
 `;
 
@@ -61,19 +61,6 @@ export const TrackControls = styled.div`
 			color: #FACD66;
 		}
 	}
-
-	.progress-bar-box{
-		width:80%;
-		background: rgba(255, 255, 255, 0.04);
-		border-radius: 50px;
-	}
-
-	.progress-bar{
-		width:50%;
-		height:8px;
-		background: #FACD66;
-		border-radius: 50px;
-	}
 `;
 
 export const VolumeTrack = styled.div`
@@ -98,6 +85,19 @@ export const VolumeTrack = styled.div`
 	.volume-bar{
 		width:80%;
 		height:4px;
+		background: #FACD66;
+		border-radius: 50px;
+	}
+`;
+
+export const ProgressBar = styled.div`
+		width:80%;
+		background: rgba(255, 255, 255, 0.04);
+		border-radius: 50px;
+
+		.track-progress-bar{
+		width:0%;
+		height:8px;
 		background: #FACD66;
 		border-radius: 50px;
 	}
