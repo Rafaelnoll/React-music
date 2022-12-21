@@ -5,6 +5,7 @@ import {
 	ProgressBar,
 	TrackControls,
 	TrackInfo,
+	VolumeBar,
 	VolumeTrack,
 } from "./styles";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
@@ -14,7 +15,7 @@ import { useState } from "react";
 
 export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
-	const [isPlaying, setPlaying] = useState(true);
+	const [isPlaying, setIsPlaying] = useState(true);
 	const progressBar = useRef(false);
 
 	useEffect(() => {
@@ -54,11 +55,11 @@ export function MusicPlayer() {
 
 		if (!isPlaying) {
 			audioRef.play();
-			setPlaying(true);
+			setIsPlaying(true);
 			return;
 		}
 
-		setPlaying(false);
+		setIsPlaying(false);
 		audioRef.pause();
 	}
 
@@ -90,7 +91,7 @@ export function MusicPlayer() {
 				<VolumeTrack>
 					<BsFillVolumeUpFill className="volume-icon" />
 					<div className="volume-bar-box">
-						<div className="volume-bar" />
+						<VolumeBar type="range"/>
 					</div>
 				</VolumeTrack>
 			</MusicPlayerContainer>

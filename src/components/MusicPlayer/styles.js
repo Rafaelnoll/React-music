@@ -78,14 +78,6 @@ export const VolumeTrack = styled.div`
 		width:100%;
 		min-width:40px;
 		max-width:150px;
-		background: rgba(255, 255, 255, 0.04);
-		border-radius: 50px;
-	}
-
-	.volume-bar{
-		width:80%;
-		height:4px;
-		background: #FACD66;
 		border-radius: 50px;
 	}
 
@@ -104,5 +96,43 @@ export const ProgressBar = styled.div`
 		height:8px;
 		background: #FACD66;
 		border-radius: 50px;
+	}
+`;
+
+export const VolumeBar = styled.input`
+	overflow: hidden;
+	height:100%;
+  -webkit-appearance: none;
+  background-color: rgba(255, 255, 255, 0.04);
+	border-radius:12pc;
+
+	&::-webkit-slider-runnable-track{
+		height: 10px;
+    -webkit-appearance: none;
+    color: #FACD66;
+    margin-top: -1px;
+	}
+
+	&::-webkit-slider-thumb{
+		width: 0;
+    -webkit-appearance: none;
+		height:10px;
+    cursor: ew-resize;
+    background: transparent;
+    box-shadow: -80px 0 0 80px #FACD66;
+	}
+
+	/*FF*/
+	&::-moz-range-progress {
+  	background-color: #FACD66;
+		height:100%;
+	}
+
+	/* IE*/
+	&::-ms-fill-lower {
+  	background-color: rgba(255, 255, 255, 0.04);
+	}
+	&::-ms-fill-upper {
+  	background-color: #FACD66;
 	}
 `;
