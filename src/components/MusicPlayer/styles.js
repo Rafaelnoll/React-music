@@ -88,6 +88,10 @@ export const VolumeTrack = styled.div`
 		background: #FACD66;
 		border-radius: 50px;
 	}
+
+	@media (max-width:980px){
+		display:none;
+	}
 `;
 
 export const ProgressBar = styled.div`
