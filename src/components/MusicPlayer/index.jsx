@@ -17,6 +17,7 @@ export function MusicPlayer() {
 	const { state } = useContext(MusicPlayerContext);
 	const [isPlaying, setIsPlaying] = useState(true);
 	const progressBar = useRef(false);
+	const volumeBar = useRef(false);
 
 	useEffect(() => {
 
@@ -24,6 +25,9 @@ export function MusicPlayer() {
 
 			if (progressBar.current) {
 				const audioRef = state.currentTrack.track;
+				const volume = volumeBar.current.value / 100;
+				audioRef.volume = volume;
+
 				const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
 				progressBar.current.style.width = `${percentProgressBar}%`;
 
@@ -91,7 +95,7 @@ export function MusicPlayer() {
 				<VolumeTrack>
 					<BsFillVolumeUpFill className="volume-icon" />
 					<div className="volume-bar-box">
-						<VolumeBar type="range"/>
+						<VolumeBar ref={volumeBar} type="range" defaultValue={100}/>
 					</div>
 				</VolumeTrack>
 			</MusicPlayerContainer>
