@@ -1,7 +1,6 @@
 import { Main } from "../../components/Main";
 import { MusicsList } from "../../components/MusicsList";
 import {
-	AlbumContent,
 	AlbumTemplate,
 	AlbumTemplateHeader,
 	ActionButtons
@@ -35,7 +34,7 @@ export function Album() {
 		isLoaded && (
 			<AlbumTemplate backgroundImage={album.image}>
 				<Main>
-					<AlbumContent>
+					<div className="album-content">
 						<AlbumTemplateHeader>
 							<div className="image-box">
 								<img src={album.image} />
@@ -52,7 +51,7 @@ export function Album() {
 							</div>
 						</AlbumTemplateHeader>
 						<MusicsList tracks={album.tracks.items} />
-					</AlbumContent>
+					</div>
 				</Main>
 			</AlbumTemplate>
 		)
