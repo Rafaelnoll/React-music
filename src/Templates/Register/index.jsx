@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Main } from "../../components/Main";
 import { FormContainer } from "./styles";
 import Logo from "../../assets/imgs/logo.svg";
@@ -6,8 +6,10 @@ import { verifyPassword } from "../../utils/verifyPassword";
 import { validateEmail } from "../../utils/validateEmail";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
+import { isTheSame } from "../../utils/isTheSame";
 
 export function Register() {
+	const [message, setMessage] = useState({ error: false, msg: "" });
 	const formRef = useRef();
 	const navigate = useNavigate();
 
@@ -30,15 +32,50 @@ export function Register() {
 		const passwordIsCorrect = verifyPassword(password, repeatedPassword);
 		const emailIsCorrect = validateEmail(email);
 
-		if (emailIsCorrect && passwordIsCorrect) {
-			await api.post("/user", {
-				email,
-				password,
-				repeatedPassword,
-			});
-			clearForm();
-			navigate("/login");
+		if (email === "") {
+			setMessage({ error: true, msg: "Email field cannot be empty" });
 			return;
+		}
+
+		if (!emailIsCorrect) {
+			setMessage({ error: true, msg: "Email is not correct" });
+			return;
+		}
+
+		if (password === "") {
+			setMessage({ error: true, msg: "Pasword field cannot be empty" });
+			return;
+		}
+
+		if (!isTheSame(password, repeatedPassword)) {
+			setMessage({ error: true, msg: "Passwords must be the same" });
+			return;
+		}
+
+		if (!passwordIsCorrect) {
+			setMessage({ error: true, msg: "Password must have a minimum of 6 and a maximum of 15 characters" });
+			return;
+		}
+
+
+		if (emailIsCorrect && passwordIsCorrect) {
+			try {
+				const response = await api.post("/user", {
+					email,
+					password,
+					repeatedPassword,
+				});
+
+				clearForm();
+				setMessage({ error: false, msg: response.data.msg });
+				navigate("/login");
+				return;
+			} catch (error) {
+				const errorResponse = error.response.data;
+				if (errorResponse.error) {
+					setMessage({ error: true, msg: errorResponse.msg });
+				}
+			}
 		}
 
 		return;
@@ -62,6 +99,8 @@ export function Register() {
 						Register
 					</button>
 				</form>
+				{message.error && <span className="form-message error">{message.msg}</span>}
+				{!message.error && <span className="form-message success">{message.msg}</span>}
 			</FormContainer>
 
 		</Main>
