@@ -20,7 +20,6 @@ export function Login() {
 					</button>
 				</form>
 			</FormContainer>
-
 		</Main>
 	);
 }
