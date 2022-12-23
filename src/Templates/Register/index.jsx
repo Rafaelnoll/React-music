@@ -68,7 +68,11 @@ export function Register() {
 
 				clearForm();
 				setMessage({ error: false, msg: response.data.msg });
-				navigate("/login");
+				navigate("/login", {
+					state: {
+						message: "User created!",
+					},
+				});
 				return;
 			} catch (error) {
 				const errorResponse = error.response.data;
