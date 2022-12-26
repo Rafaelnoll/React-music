@@ -88,6 +88,10 @@ export const MessageFromRegister = styled.div`
 			font-size:32px;
 			color:#2EB086;
 		}
+
+		.message-icon.error{
+			color:red;
+		}
 	}
 
 	.timer-bar{
@@ -96,6 +100,10 @@ export const MessageFromRegister = styled.div`
 		background-color: #2EB086;
 		animation: timer-animation 4s forwards;
 		border-bottom-left-radius:4px;
+	}
+
+	.timer-bar.error{
+		background-color:red;
 	}
 
 	@keyframes show {

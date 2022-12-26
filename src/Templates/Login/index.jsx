@@ -1,19 +1,39 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Main } from "../../components/Main";
 import { FormContainer, MessageFromRegister } from "./styles";
 import Logo from "../../assets/imgs/logo.svg";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { VscError } from "react-icons/vsc";
 import { useLocation } from "react-router-dom";
 import { ModalMessageContext } from "../../contexts/ModalMessageContext";
+import api from "../../api";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+	const formRef = useRef();
 	const { state } = useLocation();
 	const { modalState, modalDispatch } = useContext(ModalMessageContext);
+	const [loginError, setLoginError] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (state) {
-			modalDispatch({ type: "send_message", message: state.message });
+		if(localStorage.getItem("@logged@user")){
+			navigate("/user");
+			return;
 		}
+
+		if (state) {
+			sendMessageToModal(state.message);
+		}
+
+		return () => {
+			modalDispatch({ type: "clear" });
+		};
+
+	}, []);
+
+	function sendMessageToModal(message) {
+		modalDispatch({ type: "send_message", message });
 
 		function clearModal() {
 			setInterval(() => {
@@ -22,12 +42,35 @@ export function Login() {
 		}
 
 		clearModal();
+	}
 
-		return () => {
-			modalDispatch({ type: "clear" });
-		};
+	async function userSignIn(e) {
+		e.preventDefault();
+		const form = formRef.current;
 
-	}, []);
+		const email = form.email.value;
+		const password = form.password.value;
+
+		try {
+			const response = await api.post("/login", { email, password });
+			const userData = response.data;
+			form.email.value = "";
+			form.password.value = "";
+			const userObject = {
+				email: userData.user.user.email,
+				uid: userData.user.user.uid,
+			};
+
+			localStorage.setItem("@logged@user", JSON.stringify(userObject));
+			setLoginError(false);
+			sendMessageToModal(userData.msg);
+			navigate("/user");
+		} catch (error) {
+			const errorResponse = error.response.data;
+			setLoginError(true);
+			sendMessageToModal(errorResponse.msg);
+		}
+	}
 
 	return (
 		<Main>
@@ -36,11 +79,11 @@ export function Login() {
 				<div className="image-box">
 					<img src={Logo} alt="Logo, two music notes" />
 				</div>
-				<form>
+				<form ref={formRef} onSubmit={userSignIn}>
 					<label>E-mail</label>
-					<input placeholder="E-mail" type="email" />
+					<input placeholder="E-mail" type="email" name="email" />
 					<label>Password</label>
-					<input placeholder="Password" type="password" />
+					<input placeholder="Password" type="password" name="password" />
 					<button>
 						Login
 					</button>
@@ -48,11 +91,20 @@ export function Login() {
 			</FormContainer>
 			{modalState.message && (
 				<MessageFromRegister>
-					<div className="message-content">
-						<AiFillCheckCircle className="message-icon" />
-						<strong>{modalState.message}</strong>
-					</div>
-					<div className="timer-bar" />
+					{!loginError ? (
+						<>
+							<div className="message-content">
+								<AiFillCheckCircle className="message-icon" />
+								<strong>{modalState.message}</strong>
+							</div><div className="timer-bar" />
+						</>
+					) :
+						(
+							<><div className="message-content">
+								<VscError className="message-icon error" />
+								<strong>{modalState.message}</strong>
+							</div><div className="timer-bar error" /></>
+						)}
 				</MessageFromRegister>
 			)}
 		</Main>
