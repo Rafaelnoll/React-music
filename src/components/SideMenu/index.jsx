@@ -22,7 +22,7 @@ export function SideMenu() {
 				<Link to="/"><BiRadio className="icon" color={theme.iconColor} /></Link>
 			</NavMenuContainer>
 			<NavMenuContainer>
-				<Link to="/"><AiOutlineUser className="icon" color={theme.iconColor} /></Link>
+				<Link to="/profile"><AiOutlineUser className="icon" color={theme.iconColor} /></Link>
 				<Link to="/"><BiExit className="icon" color={theme.iconColor} /></Link>
 			</NavMenuContainer>
 

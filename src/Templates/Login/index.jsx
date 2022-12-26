@@ -20,7 +20,7 @@ export function Login() {
 
 	useEffect(() => {
 		if (authenticated) {
-			navigate("/user");
+			navigate("/profile");
 			return;
 		}
 
@@ -62,7 +62,7 @@ export function Login() {
 			handleLogin(userData.userToken);
 			setLoginError(false);
 			sendMessageToModal(userData.msg);
-			navigate("/user");
+			navigate("/");
 		} catch (error) {
 			const errorResponse = error.response.data;
 			setLoginError(true);
