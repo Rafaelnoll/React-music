@@ -17,7 +17,7 @@ export function Login() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if(localStorage.getItem("@logged@user")){
+		if (localStorage.getItem("@logged@user@token")) {
 			navigate("/user");
 			return;
 		}
@@ -56,12 +56,8 @@ export function Login() {
 			const userData = response.data;
 			form.email.value = "";
 			form.password.value = "";
-			const userObject = {
-				email: userData.user.user.email,
-				uid: userData.user.user.uid,
-			};
 
-			localStorage.setItem("@logged@user", JSON.stringify(userObject));
+			localStorage.setItem("@logged@user@token", JSON.stringify(userData.userToken));
 			setLoginError(false);
 			sendMessageToModal(userData.msg);
 			navigate("/user");
