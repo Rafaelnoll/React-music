@@ -8,16 +8,18 @@ import { useLocation } from "react-router-dom";
 import { ModalMessageContext } from "../../contexts/ModalMessageContext";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 export function Login() {
 	const formRef = useRef();
+	const { authenticated, handleLogin } = useContext(AuthenticationContext);
 	const { state } = useLocation();
 	const { modalState, modalDispatch } = useContext(ModalMessageContext);
 	const [loginError, setLoginError] = useState(false);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (localStorage.getItem("@logged@user@token")) {
+		if (authenticated) {
 			navigate("/user");
 			return;
 		}
@@ -57,7 +59,7 @@ export function Login() {
 			form.email.value = "";
 			form.password.value = "";
 
-			localStorage.setItem("@logged@user@token", JSON.stringify(userData.userToken));
+			handleLogin(userData.userToken);
 			setLoginError(false);
 			sendMessageToModal(userData.msg);
 			navigate("/user");
