@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AiOutlineHome, AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
 import { BiRadio, BiExit } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 export function MenuMobile() {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -19,11 +20,11 @@ export function MenuMobile() {
 						<AiOutlineClose className="close-button" onClick={() => setMenuIsOpen(false)} />
 					</header>
 					<div className="mobile-nav">
-						<a href="/"><AiOutlineHome className="icon" color={theme.iconColor} /> Home</a>
-						<a href="/"><BsMusicPlayer className="icon" color={theme.iconColor} /> My collections</a>
-						<a href="/"><BiRadio className="icon" color={theme.iconColor} /> Radio</a>
-						<a href="/"><AiOutlineUser className="icon" color={theme.iconColor} />Profile</a>
-						<a href="/"><BiExit className="icon" color={theme.iconColor} /> Log out</a>
+						<Link to="/"><AiOutlineHome className="icon" color={theme.iconColor} /> Home</Link >
+						<Link to="/collections"><BsMusicPlayer className="icon" color={theme.iconColor} /> My collections</Link >
+						<Link to="/"><BiRadio className="icon" color={theme.iconColor} /> Radio</Link >
+						<Link to="/profile"><AiOutlineUser className="icon" color={theme.iconColor} />Profile</Link >
+						<Link to="/"><BiExit className="icon" color={theme.iconColor} /> Log out</Link >
 					</div>
 				</MobileMenu>
 			)}

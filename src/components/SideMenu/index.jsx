@@ -18,7 +18,7 @@ export function SideMenu() {
 			</Link>
 			<NavMenuContainer>
 				<Link to="/"><AiOutlineHome className="icon" color={theme.iconColor} /></Link>
-				<Link to="/"><BsMusicPlayer className="icon" color={theme.iconColor} /></Link>
+				<Link to="/collections"><BsMusicPlayer className="icon" color={theme.iconColor} /></Link>
 				<Link to="/"><BiRadio className="icon" color={theme.iconColor} /></Link>
 			</NavMenuContainer>
 			<NavMenuContainer>
