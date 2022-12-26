@@ -4,8 +4,8 @@ import api from "../../api";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../contexts/AuthenticationContext";
-import { LoginAndSignupContainer, UserInfosContainer } from "./styles";
-import { Link } from "react-router-dom";
+import { UserInfosContainer } from "./styles";
+import { LoginAndSignUpSection } from "../../components/LoginAndSignUpSection";
 
 export function ProfilePage() {
 	const [user, setUser] = useState({});
@@ -39,18 +39,7 @@ export function ProfilePage() {
 					</div>
 				</UserInfosContainer>
 			) : (
-				<LoginAndSignupContainer>
-					<strong>You are not logged in</strong>
-					<div className="buttons-container">
-						<Link to="/login">
-							<button className="login">Login</button>
-						</Link>
-						<span> or</span>
-						<Link to="/register">
-							<button className="register">Signup</button>
-						</Link>
-					</div>
-				</LoginAndSignupContainer>
+				<LoginAndSignUpSection title="You are not logged in"/>
 			)}
 		</Main>
 	);

@@ -1,6 +1,6 @@
-import { CollectionCard } from "../../components/CollectionCard";
+import { CollectionCardsList } from "../../components/CollectionCardsList";
 import { Main } from "../../components/Main";
-import { CategoriesContainer, CollectionCards, CollectionsTemplate } from "./styles";
+import { CategoriesContainer, CollectionsTemplate } from "./styles";
 
 export function Collections() {
 	return (
@@ -10,18 +10,7 @@ export function Collections() {
 					<button>My collection</button>
 					<button>Likes</button>
 				</CategoriesContainer>
-				<CollectionCards>
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-				</CollectionCards>
+				<CollectionCardsList />
 			</Main>
 		</CollectionsTemplate>
 	);

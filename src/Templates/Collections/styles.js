@@ -18,10 +18,4 @@ export const CategoriesContainer = styled.div`
 	}
 `;
 
-export const CollectionCards = styled.div`
-	display:flex;
-	justify-content:center;
-	column-gap:24px;
-	flex-wrap:wrap;
-	column-gap:24px;
-`;
+

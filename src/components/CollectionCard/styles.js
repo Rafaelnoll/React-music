@@ -17,6 +17,7 @@ export const CollectionCardContainer = styled.div`
 
 	strong{
 		font-size:24px;
+		text-shadow: 1px 1px black;
 	}
 
 	.artist-name{

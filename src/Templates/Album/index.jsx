@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAlbum } from "../../utils/getAlbum";
 import { toAlbumTime } from "../../utils/toAlbumTime";
+import api from "../../api";
 
 export function Album() {
 	const [album, setAlbum] = useState({});
@@ -35,6 +36,16 @@ export function Album() {
 
 	}, []);
 
+	async function addInCollections() {
+		await api.post("/collection/album", {
+			albumId: id,
+			name: album.name,
+			image: album.image,
+			totalOfTracks: album.tracks.total,
+			artist: album.tracks.items[0].track.artists[0].name,
+		});
+	}
+
 	return (
 		isLoaded && (
 			<AlbumTemplate backgroundImage={album.image}>
@@ -50,7 +61,7 @@ export function Album() {
 								<span>{album.tracks.total} songs - {toAlbumTime(album.tracks)}</span>
 								<ActionButtons>
 									<button><AiFillPlayCircle className="icon" /> Play all</button>
-									<button><BsMusicPlayer className="icon" /> Add to collection</button>
+									<button onClick={addInCollections} ><BsMusicPlayer className="icon" /> Add to collection</button>
 									<button><AiOutlineHeart className="icon-red" /></button>
 								</ActionButtons>
 							</div>
