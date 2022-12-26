@@ -64,6 +64,19 @@ export const FormContainer = styled.div`
 			margin-top:8px;
 		}
 	}
+
+	.form-message{
+		margin-top:16px;
+		text-align:center;
+	}
+
+	.form-message.error{
+		color: #B33030;
+	}
+
+	.form-message.success{
+		color: #2EB086;
+	}
 `;
 
 export const MessageFromRegister = styled.div`

@@ -3,7 +3,6 @@ import { Main } from "../../components/Main";
 import { FormContainer, MessageFromRegister } from "./styles";
 import Logo from "../../assets/imgs/logo.svg";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { VscError } from "react-icons/vsc";
 import { useLocation } from "react-router-dom";
 import { ModalMessageContext } from "../../contexts/ModalMessageContext";
 import api from "../../api";
@@ -15,7 +14,7 @@ export function Login() {
 	const { authenticated, handleLogin } = useContext(AuthenticationContext);
 	const { state } = useLocation();
 	const { modalState, modalDispatch } = useContext(ModalMessageContext);
-	const [loginError, setLoginError] = useState(false);
+	const [message, setMessage] = useState({ error: false, msg: "" });
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -60,13 +59,11 @@ export function Login() {
 			form.password.value = "";
 
 			handleLogin(userData.userToken);
-			setLoginError(false);
-			sendMessageToModal(userData.msg);
+			setMessage({ error: false, msg: userData.msg });
 			navigate("/");
 		} catch (error) {
 			const errorResponse = error.response.data;
-			setLoginError(true);
-			sendMessageToModal(errorResponse.msg);
+			setMessage({ error: true, msg: errorResponse.msg });
 		}
 	}
 
@@ -86,23 +83,17 @@ export function Login() {
 						Login
 					</button>
 				</form>
+				{message.error && <span className="form-message error">{message.msg}</span>}
+				{!message.error && <span className="form-message success">{message.msg}</span>}
 			</FormContainer>
 			{modalState.message && (
 				<MessageFromRegister>
-					{!loginError ? (
-						<>
-							<div className="message-content">
-								<AiFillCheckCircle className="message-icon" />
-								<strong>{modalState.message}</strong>
-							</div><div className="timer-bar" />
-						</>
-					) :
-						(
-							<><div className="message-content">
-								<VscError className="message-icon error" />
-								<strong>{modalState.message}</strong>
-							</div><div className="timer-bar error" /></>
-						)}
+					<>
+						<div className="message-content">
+							<AiFillCheckCircle className="message-icon" />
+							<strong>{modalState.message}</strong>
+						</div><div className="timer-bar" />
+					</>
 				</MessageFromRegister>
 			)}
 		</Main>
