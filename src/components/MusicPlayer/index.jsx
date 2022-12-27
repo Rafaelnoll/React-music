@@ -28,10 +28,14 @@ export function MusicPlayer() {
 
 			if (progressBar.current) {
 				const audioRef = state.currentTrack.track;
+
+				if(!localStorage.getItem("user-volume")){
+					volumeBar.current.value = 50;
+				}
+
 				const volume = volumeBar.current.value / 100;
 
 				localStorage.setItem("user-volume", volume);
-
 				audioRef.volume = volume;
 
 				const percentProgressBar = (audioRef?.currentTime / audioRef?.duration) * 100;
