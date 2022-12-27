@@ -42,6 +42,6 @@ export const CollectionCardContainer = styled.div`
 	}
 
 	@media screen and (max-width:550px) {
-		width:100%;
+		min-width:100%;
 	}
 `;

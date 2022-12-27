@@ -9,6 +9,11 @@ export const MusicPlayerContainer = styled.div`
 	z-index:999;
 	background:rgba(16, 16, 16, .9);
 	padding:24px 16px;
+
+	@media screen and (max-width:550px) {
+		flex-direction:column;
+		gap:8px;
+	}
 `;
 
 export const TrackInfo = styled.div`
