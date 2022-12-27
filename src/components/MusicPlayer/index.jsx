@@ -17,7 +17,7 @@ import { useState } from "react";
 const volumeDefaultValue = localStorage.getItem("user-volume") * 100;
 
 export function MusicPlayer() {
-	const { state } = useContext(MusicPlayerContext);
+	const { state, playerDispatch } = useContext(MusicPlayerContext);
 	const [isPlaying, setIsPlaying] = useState(true);
 	const progressBar = useRef(false);
 	const volumeBar = useRef(false);
@@ -29,7 +29,7 @@ export function MusicPlayer() {
 			if (progressBar.current) {
 				const audioRef = state.currentTrack.track;
 
-				if(!localStorage.getItem("user-volume")){
+				if (!localStorage.getItem("user-volume")) {
 					volumeBar.current.value = 50;
 				}
 
@@ -47,6 +47,7 @@ export function MusicPlayer() {
 
 				if (percentProgressBar === 100 || isNaN(percentProgressBar)) {
 					clearInterval(progressBarPercent);
+					nextTrack();
 
 					if (audioRef) {
 						audioRef.currentTime = 0;
@@ -62,7 +63,18 @@ export function MusicPlayer() {
 
 		}, 500);
 
-	}, [state, isPlaying]);
+	}, [state]);
+
+	useEffect(() => {
+
+		if (state.currentTrack) {
+			const audioRef = state.currentTrack.track;
+			audioRef.volume = localStorage.getItem("user-volume");
+			audioRef.play();
+			setIsPlaying(true);
+		}
+
+	}, [state.currentTrack]);
 
 	function playTrack() {
 		const audioRef = state.currentTrack.track;
@@ -77,6 +89,50 @@ export function MusicPlayer() {
 		audioRef.pause();
 	}
 
+	function nextTrack() {
+		const currentTrack = state.currentTrack.track;
+		currentTrack.pause();
+		let nextTrackIndex = state.currentTrack.trackIndex + 1;
+
+		if (nextTrackIndex >= state.albumTracks.length) {
+			nextTrackIndex = 0;
+		}
+
+		const nextTrack = state.albumTracks[nextTrackIndex].track;
+		const trackAudio = new Audio(nextTrack.preview_url);
+
+		const nextTrackData = {
+			name: nextTrack.name,
+			image: nextTrack.album.images[0].url,
+			artist: nextTrack.artists[0].name,
+			trackIndex: nextTrackIndex,
+			track: trackAudio,
+		};
+		playerDispatch({ type: "play", track: nextTrackData });
+	}
+
+	function previusTrack() {
+		const currentTrack = state.currentTrack.track;
+		currentTrack.pause();
+		let previusTrackIndex = state.currentTrack.trackIndex - 1;
+
+		if (previusTrackIndex < 0) {
+			previusTrackIndex = state.albumTracks.length - 1;
+		}
+
+		const previusTrack = state.albumTracks[previusTrackIndex].track;
+		const trackAudio = new Audio(previusTrack.preview_url);
+
+		const previusTrackData = {
+			name: previusTrack.name,
+			image: previusTrack.album.images[0].url,
+			artist: previusTrack.artists[0].name,
+			trackIndex: previusTrackIndex,
+			track: trackAudio,
+		};
+		playerDispatch({ type: "play", track: previusTrackData });
+	}
+
 	return (
 		state.currentTrack && (
 			<MusicPlayerContainer>
@@ -89,11 +145,11 @@ export function MusicPlayer() {
 				</TrackInfo>
 				<TrackControls>
 					<div className="control-buttons">
-						<button><BiSkipPrevious /></button>
+						<button onClick={previusTrack}><BiSkipPrevious /></button>
 						<button onClick={playTrack} className="play-button">
 							{isPlaying ? <AiFillPauseCircle /> : <AiFillPlayCircle />}
 						</button>
-						<button><BiSkipNext /></button>
+						<button onClick={nextTrack}><BiSkipNext /></button>
 					</div>
 					<ProgressBar>
 						<div ref={progressBar} className="track-progress-bar" />

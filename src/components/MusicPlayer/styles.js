@@ -12,7 +12,7 @@ export const MusicPlayerContainer = styled.div`
 
 	@media screen and (max-width:550px) {
 		flex-direction:column;
-		gap:8px;
+		gap:4px;
 	}
 `;
 
@@ -29,6 +29,7 @@ export const TrackInfo = styled.div`
 	.track-texts{
 		display:flex;
 		flex-direction:column;
+		width:150px;
 
 		strong{
 			color: #fff;

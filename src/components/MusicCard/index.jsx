@@ -5,7 +5,7 @@ import P from "prop-types";
 import { useContext, useRef } from "react";
 import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 
-export function MusicCard({ image, name, artist, duration, previewUrl }) {
+export function MusicCard({ image, name, artist, duration, previewUrl, trackIndex }) {
 	const { state, playerDispatch } = useContext(MusicPlayerContext);
 	const audioRef = useRef();
 
@@ -15,8 +15,9 @@ export function MusicCard({ image, name, artist, duration, previewUrl }) {
 
 		if (state.currentTrack) {
 			state.currentTrack.track.pause();
-			playerDispatch({ type: "clear" });
+			playerDispatch({ type: "clear_track" });
 		}
+
 
 		playerDispatch({
 			type: "play", track: {
@@ -24,12 +25,13 @@ export function MusicCard({ image, name, artist, duration, previewUrl }) {
 				image,
 				name,
 				artist,
+				trackIndex,
 			}
 		});
 
 		const userVolume = localStorage.getItem("user-volume");
 
-		if(userVolume){
+		if (userVolume) {
 			audioRef.current.volume = userVolume;
 			audioRef.current.play();
 			return;
@@ -60,4 +62,5 @@ MusicCard.propTypes = {
 	artist: P.string.isRequired,
 	duration: P.string.isRequired,
 	previewUrl: P.string.isRequired,
+	trackIndex: P.number.isRequired,
 };

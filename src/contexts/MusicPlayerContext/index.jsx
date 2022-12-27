@@ -4,15 +4,18 @@ import P from "prop-types";
 
 const initialState = {
 	currentTrack: "",
-	isPaused: true,
+	albumTracks:[],
 };
 
 function reducer(state, action) {
 	switch (action.type) {
 	case "play":
-		return { currentTrack: action.track, isPaused: false };
-	case "clear":
-		return initialState;
+		console.log(state);
+		return {...state, currentTrack: action.track};
+	case "select_album":
+		return {...state, albumTracks: action.albumTracks};
+	case "clear_track":
+		return {...state, currentTrack: initialState.currentTrack};
 	default:
 		throw new Error("Error in reducer");
 	}
