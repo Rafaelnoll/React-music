@@ -89,9 +89,9 @@ export function MusicPlayer() {
 		audioRef.pause();
 	}
 
-	function nextTrack() {
+	async function nextTrack() {
 		const currentTrack = state.currentTrack.track;
-		currentTrack.pause();
+		await currentTrack.pause();
 		let nextTrackIndex = state.currentTrack.trackIndex + 1;
 
 		if (nextTrackIndex >= state.albumTracks.length) {

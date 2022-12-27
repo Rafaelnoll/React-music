@@ -10,7 +10,6 @@ const initialState = {
 function reducer(state, action) {
 	switch (action.type) {
 	case "play":
-		console.log(state);
 		return {...state, currentTrack: action.track};
 	case "select_album":
 		return {...state, albumTracks: action.albumTracks};
