@@ -23,10 +23,11 @@ export const NavMenuContainer = styled.div`
 	display:flex;
 	flex-direction:column;
 	align-items:center;
-	gap:31px;
+	gap:32px;
 
 	.icon{
 		font-size:22px;
+		cursor: pointer;
 	}
 
 	@media (max-width: 980px){

@@ -9,8 +9,4 @@ export const AlbumsContainer = styled.div`
 		margin-bottom:16px;
 	}
 
-	/*Swiper Container */
-
-
-
 `;

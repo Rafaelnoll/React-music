@@ -9,8 +9,12 @@ import { BsMusicPlayer } from "react-icons/bs";
 import { BiRadio, BiExit } from "react-icons/bi";
 import { theme } from "../../styles/theme";
 import { MenuMobile } from "../MenuMobile";
+import { useContext } from "react";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 export function SideMenu() {
+	const { authenticated, handleLogout } = useContext(AuthenticationContext);
+
 	return (
 		<SideMenuContainer>
 			<Link to="/">
@@ -23,7 +27,7 @@ export function SideMenu() {
 			</NavMenuContainer>
 			<NavMenuContainer>
 				<Link to="/profile"><AiOutlineUser className="icon" color={theme.iconColor} /></Link>
-				<Link to="/"><BiExit className="icon" color={theme.iconColor} /></Link>
+				{authenticated && <BiExit onClick={handleLogout} className="icon" color={theme.iconColor} />}
 			</NavMenuContainer>
 
 			<MenuMobile />

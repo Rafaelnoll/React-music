@@ -44,12 +44,13 @@ export const MobileMenu = styled.div`
 		gap: 16px;
 		margin-top:16px;
 
-		a{
+		a,.logout-button-mobile{
 			display:flex;
 			align-items:center;
 			text-decoration:none;
 			color: rgba(239, 238, 224, 0.25);
 			padding:5px;
+			cursor: pointer;
 		}
 
 		.icon{
