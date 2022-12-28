@@ -11,6 +11,11 @@ export const ChartContainer = styled.div`
 	cursor: pointer;
 	transition: opacity .1s ease-in;
 
+	img{
+		max-width:64px;
+		border-radius:12px;
+	}
+
 	&:active{
 		opacity:0.6;
 	}
