@@ -5,11 +5,12 @@ import P from "prop-types";
 import { useContext, useRef } from "react";
 import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 
-export function MusicCard({ image, name, artist, duration, previewUrl, trackIndex }) {
+export function MusicCard({ image, name, artist, duration, previewUrl, trackIndex,selectAlbum }) {
 	const { state, playerDispatch } = useContext(MusicPlayerContext);
 	const audioRef = useRef();
 
 	function playTrack() {
+		selectAlbum();
 		const track = new Audio(previewUrl);
 		audioRef.current = track;
 
@@ -63,4 +64,5 @@ MusicCard.propTypes = {
 	duration: P.string.isRequired,
 	previewUrl: P.string.isRequired,
 	trackIndex: P.number.isRequired,
+	selectAlbum: P.func.isRequired,
 };

@@ -6,10 +6,19 @@ import { useContext, useEffect } from "react";
 import { MusicPlayerContext } from "../../contexts/MusicPlayerContext";
 
 export function MusicsList({ tracks = [] }) {
-	const { playerDispatch } = useContext(MusicPlayerContext);
+	const { state, playerDispatch } = useContext(MusicPlayerContext);
+
+	function selectAlbum() {
+		playerDispatch({ type: "select_album", albumTracks: tracks });
+	}
 
 	useEffect(() => {
-		playerDispatch({ type: "select_album", albumTracks: tracks });
+
+		if (state.albumTracks[0] !== undefined) {
+			return;
+		}
+
+		selectAlbum();
 	}, []);
 
 	return (
@@ -23,6 +32,7 @@ export function MusicsList({ tracks = [] }) {
 					duration={ToMinutes(track.duration_ms)}
 					previewUrl={track.preview_url}
 					trackIndex={trackIndex}
+					selectAlbum={selectAlbum}
 				/>
 			))}
 		</MusicsListContainer>
