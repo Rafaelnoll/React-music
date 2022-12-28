@@ -6,7 +6,7 @@ export function Home() {
 	return (
 		<Main>
 			<TopCharts />
-			<AlbumsCarrossel label="New releases" />
+			<AlbumsCarrossel label="Albums" />
 		</Main>
 	);
 }
