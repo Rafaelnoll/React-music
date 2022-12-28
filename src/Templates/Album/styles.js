@@ -5,7 +5,7 @@ export const AlbumTemplate = styled.div`
 	linear-gradient(180deg, rgba(29, 33, 35, .3) 0%, #1D2123 50%),
 	url(${({ backgroundImage }) => backgroundImage});
 	background-repeat:no-repeat;
-	background-size:cover;
+	background-size:100vw;
 `;
 
 export const AlbumTemplateHeader = styled.div`

@@ -8,7 +8,6 @@ import {
 } from "./styles";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAlbum } from "../../utils/getAlbum";
@@ -62,7 +61,6 @@ export function Album() {
 								<ActionButtons>
 									<button><AiFillPlayCircle className="icon" /> Play all</button>
 									<button onClick={addInCollections} ><BsMusicPlayer className="icon" /> Add to collection</button>
-									<button><AiOutlineHeart className="icon-red" /></button>
 								</ActionButtons>
 							</div>
 						</AlbumTemplateHeader>
