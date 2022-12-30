@@ -1,16 +1,18 @@
 import { TopChartContainer, ChartsList } from "./styles";
 import { HeroSection } from "../HeroSection";
 import { Chart } from "../Chart";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { getTopCharts } from "../../utils/getTopcharts";
+import { AlbumsContext } from "../../contexts/AlbumsContext";
 
 export function TopCharts() {
-	const [topCharts, setTopCharts] = useState([]);
+	const [topCharts,setTopCharts] = useState([]);
+	const { albums } = useContext(AlbumsContext);
 
 	useEffect(() => {
 		(async () => {
-			const topCharts = await getTopCharts();
+			const topCharts = await getTopCharts(albums);
 			setTopCharts(topCharts);
 		})();
 	}, []);

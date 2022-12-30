@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { AlbumCard } from "../AlbumCard";
 import { AlbumsContainer } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import P from "prop-types";
 import "swiper/css";
-import api from "../../api/";
+import { AlbumsContext } from "../../contexts/AlbumsContext";
 
 const swiperBreakPoints = {
 	// when window width is >= 200px
@@ -31,20 +31,7 @@ const swiperBreakPoints = {
 
 export function AlbumsCarrossel({ label }) {
 	// eslint-disable-next-line no-unused-vars
-	const [albums, setAlbums] = useState([]);
-
-	useEffect(() => {
-		api.get("/albums")
-			.then((response) => {
-				const albums = response.data;
-				setAlbums(albums);
-			})
-			.catch((error) => {
-				if (error) {
-					return;
-				}
-			});
-	}, []);
+	const { albums } = useContext(AlbumsContext);
 
 	return (
 		<>
@@ -54,7 +41,7 @@ export function AlbumsCarrossel({ label }) {
 					slidesPerView={3}
 					breakpoints={swiperBreakPoints}
 				>
-					{albums.map((album) => (
+					{albums?.map((album) => (
 						<SwiperSlide key={album.id}>
 							<AlbumCard
 								albumId={album.id}

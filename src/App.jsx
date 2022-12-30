@@ -11,6 +11,7 @@ import { Register } from "./Templates/Register";
 import { ProfilePage } from "./Templates/ProfilePage";
 import { ModalMessageProvider } from "./contexts/ModalMessageContext";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
+import { AlbumsProvider } from "./contexts/AlbumsContext";
 
 function App() {
 
@@ -19,18 +20,20 @@ function App() {
 			<GlobalStyles />
 			<BrowserRouter>
 				<AuthenticationProvider>
-					<MusicPlayerProvider>
-						<Routes>
-							<Route path="/album/:id" element={<Album />} />
-							<Route path="/collections" element={<Collections />} />
-							<Route path="/register" element={<Register />} />
-							<Route path="/login" element={<ModalMessageProvider><Login /></ModalMessageProvider>} />
-							<Route path="/profile" element={<ProfilePage />} />
-							<Route path="/" element={<Home />} />
-							<Route path="/*" element={<Page404 />} />
-						</Routes>
-						<MusicPlayer />
-					</MusicPlayerProvider>
+					<AlbumsProvider>
+						<MusicPlayerProvider>
+							<Routes>
+								<Route path="/album/:id" element={<Album />} />
+								<Route path="/collections" element={<Collections />} />
+								<Route path="/register" element={<Register />} />
+								<Route path="/login" element={<ModalMessageProvider><Login /></ModalMessageProvider>} />
+								<Route path="/profile" element={<ProfilePage />} />
+								<Route path="/" element={<Home />} />
+								<Route path="/*" element={<Page404 />} />
+							</Routes>
+							<MusicPlayer />
+						</MusicPlayerProvider>
+					</AlbumsProvider>
 				</AuthenticationProvider>
 			</BrowserRouter>
 		</>

@@ -1,12 +1,9 @@
-import api from "../api";
 import { toAlbumTime } from "./toAlbumTime";
 
-export async function getTopCharts() {
-	const response = await api.get("/topCharts");
-	const topChartsData = response.data;
+export async function getTopCharts(albums) {
+	const topChartsFiltred = albums.filter((album) => album.topChart);
 
-
-	const topCharts = topChartsData.map((chart) => {
+	const topCharts = topChartsFiltred.map((chart) => {
 		const albumTime = toAlbumTime(chart.tracks, { showTimeType: false });
 
 		return {
