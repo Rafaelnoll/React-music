@@ -15,7 +15,7 @@ export function TopCharts() {
 			const topCharts = await getTopCharts(albums);
 			setTopCharts(topCharts);
 		})();
-	}, []);
+	}, [albums]);
 
 	return (
 		<TopChartContainer className="top-charts-container">
