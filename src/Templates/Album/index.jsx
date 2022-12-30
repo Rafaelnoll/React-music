@@ -4,15 +4,13 @@ import { MusicsList } from "../../components/MusicsList";
 import {
 	AlbumTemplate,
 	AlbumTemplateHeader,
-	ActionButtons
 } from "./styles";
-import { AiFillPlayCircle } from "react-icons/ai";
-import { BsMusicPlayer } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAlbum } from "../../utils/getAlbum";
 import { toAlbumTime } from "../../utils/toAlbumTime";
 import api from "../../api";
+import { AlbumActionButtons } from "../../components/AlbumActionButtons";
 
 export function Album() {
 	const [album, setAlbum] = useState({});
@@ -35,7 +33,7 @@ export function Album() {
 
 	}, []);
 
-	async function addInCollections() {
+	async function handleAddInCollections() {
 		await api.post("/collection/album", {
 			albumId: id,
 			name: album.name,
@@ -58,10 +56,7 @@ export function Album() {
 								<h1>{album.name}</h1>
 								<p>{album.description}</p>
 								<span>{album.tracks.total} songs - {toAlbumTime(album.tracks)}</span>
-								<ActionButtons>
-									<button><AiFillPlayCircle className="icon" /> Play all</button>
-									<button onClick={addInCollections} ><BsMusicPlayer className="icon" /> Add to collection</button>
-								</ActionButtons>
+								<AlbumActionButtons handleAddInCollections={handleAddInCollections} albumId={id} />
 							</div>
 						</AlbumTemplateHeader>
 						<MusicsList tracks={album.tracks.items} />
