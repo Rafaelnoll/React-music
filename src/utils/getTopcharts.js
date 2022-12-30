@@ -7,7 +7,7 @@ export async function getTopCharts() {
 
 
 	const topCharts = topChartsData.map((chart) => {
-		const albumTime = toAlbumTime(chart.tracks);
+		const albumTime = toAlbumTime(chart.tracks, { showTimeType: false });
 
 		return {
 			id: chart.id,
