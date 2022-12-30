@@ -32,7 +32,7 @@ export const AlbumTemplateHeader = styled.div`
 		max-width:600px;
 
 		h1{
-			color:#A4C7C6;
+			color:#fff;
 			font-size:40px;
 			font-weight:700;
 		}

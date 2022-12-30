@@ -108,12 +108,14 @@ export function MusicPlayer() {
 			trackIndex: nextTrackIndex,
 			track: trackAudio,
 		};
-		playerDispatch({ type: "play", track: nextTrackData });
+
+		await playerDispatch({ type: "play", track: nextTrackData });
+
 	}
 
-	function previusTrack() {
+	async function previusTrack() {
 		const currentTrack = state.currentTrack.track;
-		currentTrack.pause();
+		await currentTrack.pause();
 		let previusTrackIndex = state.currentTrack.trackIndex - 1;
 
 		if (previusTrackIndex < 0) {
@@ -130,7 +132,8 @@ export function MusicPlayer() {
 			trackIndex: previusTrackIndex,
 			track: trackAudio,
 		};
-		playerDispatch({ type: "play", track: previusTrackData });
+
+		await playerDispatch({ type: "play", track: previusTrackData });
 	}
 
 	return (
