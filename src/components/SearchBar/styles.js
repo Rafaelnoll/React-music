@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const TopNavContainer = styled.div`
+export const SearchBarContainer = styled.div`
 	width:100%;
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	`;
+`;
 
-export const SearchIconBox = styled.div`
+export const SearchBarIconBox = styled.div`
 	width:40px;
 	display:flex;
 	align-items:center;
@@ -16,7 +16,7 @@ export const SearchIconBox = styled.div`
 	font-size:22px;
 	`;
 
-export const TopNavInput = styled.input`
+export const SearchBarInput = styled.input`
 	flex:1;
 	height:100%;
 	padding: 26px 4px;

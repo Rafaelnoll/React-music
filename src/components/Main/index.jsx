@@ -1,6 +1,6 @@
 import P from "prop-types";
+import { SearchBar } from "../SearchBar";
 import { SideMenu } from "../SideMenu";
-import { TopNav } from "../TopNav";
 import { MainContainer, MainContent } from "./styles";
 
 export function Main({ children }) {
@@ -8,7 +8,7 @@ export function Main({ children }) {
 		<MainContainer>
 			<SideMenu />
 			<MainContent>
-				<TopNav />
+				<SearchBar />
 				{children}
 			</MainContent>
 		</MainContainer>
