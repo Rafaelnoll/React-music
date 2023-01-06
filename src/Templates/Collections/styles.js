@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const CollectionsTemplate = styled.div`
-	margin-bottom:120px;
+	margin-bottom:150px;
 
 	@media screen and (max-width: 550px) {
-		margin-bottom:180px;
+		margin-bottom:220px;
 	}
 `;
 

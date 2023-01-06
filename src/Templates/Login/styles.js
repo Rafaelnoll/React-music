@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FormContainer = styled.div`
 	position:relative;
 	max-width:600px;
-	margin:0 auto 120px;
+	margin:0 auto 150px;
 	background-color:rgba(51, 55, 59, 0.37);;
 	border-radius:24px;
 	padding:16px;
@@ -81,7 +81,7 @@ export const FormContainer = styled.div`
 	}
 
 	@media screen and (max-width: 550px) {
-		margin-bottom:180px;
+		margin-bottom:220px;
 	}
 `;
 
