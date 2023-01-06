@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/imgs/logo.svg";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
-import { BiRadio, BiExit } from "react-icons/bi";
+import { BiExit } from "react-icons/bi";
 import { theme } from "../../styles/theme";
 import { MenuMobile } from "../MenuMobile";
 import { useContext } from "react";
@@ -23,9 +23,6 @@ export function SideMenu() {
 			<NavMenuContainer>
 				<Link to="/"><AiOutlineHome className="icon" color={theme.iconColor} /></Link>
 				<Link to="/collections"><BsMusicPlayer className="icon" color={theme.iconColor} /></Link>
-				<Link to="/"><BiRadio className="icon" color={theme.iconColor} /></Link>
-			</NavMenuContainer>
-			<NavMenuContainer>
 				<Link to="/profile"><AiOutlineUser className="icon" color={theme.iconColor} /></Link>
 				{authenticated && <BiExit onClick={handleLogout} className="icon" color={theme.iconColor} />}
 			</NavMenuContainer>

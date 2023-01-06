@@ -48,7 +48,7 @@ export const MobileMenu = styled.div`
 			display:flex;
 			align-items:center;
 			text-decoration:none;
-			color: rgba(239, 238, 224, 0.25);
+			color:#fafafa;
 			padding:5px;
 			cursor: pointer;
 		}
