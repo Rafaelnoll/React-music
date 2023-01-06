@@ -5,6 +5,9 @@ export const SearchBarContainer = styled.div`
 	display:flex;
 	align-items:center;
 	justify-content:center;
+	background-color:#fafafa;
+	border-radius:48px;
+	margin:16px 0;
 `;
 
 export const SearchBarIconBox = styled.div`
@@ -19,12 +22,12 @@ export const SearchBarIconBox = styled.div`
 export const SearchBarInput = styled.input`
 	flex:1;
 	height:100%;
-	padding: 26px 4px;
+	padding: 16px 4px;
 	border:none;
 	background:transparent;
 	font-size:16px;
 	font-weight:800;
-	color:white;
+	color:#000;
 	border:0;
 	&:focus{
 		outline:none;

@@ -1,7 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { SearchBarIconBox, SearchBarContainer, SearchBarInput } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
-import { theme } from "../../styles/theme";
 import { AlbumsContext } from "../../contexts/AlbumsContext";
 import SearchBarModal from "../SearchBarModal";
 
@@ -31,7 +30,7 @@ export function SearchBar() {
 		<>
 			<SearchBarContainer>
 				<SearchBarIconBox onClick={focusOnInput}>
-					<AiOutlineSearch color={theme.iconColor} />
+					<AiOutlineSearch color="#000" />
 				</SearchBarIconBox>
 				<SearchBarInput
 					value={searchValue}
