@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
 	max-width:600px;
-	margin:0 auto;
+	margin:0 auto 120px;
 	background-color:rgba(51, 55, 59, 0.37);;
 	border-radius:24px;
 	padding:16px;
@@ -77,4 +77,8 @@ export const FormContainer = styled.div`
 		color: #2EB086;
 	}
 
+
+	@media screen and (max-width: 550px) {
+		margin-bottom:180px;
+	}
 `;

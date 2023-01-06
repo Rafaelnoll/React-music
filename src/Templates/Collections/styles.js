@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const CollectionsTemplate = styled.div`
+	margin-bottom:120px;
 
+	@media screen and (max-width: 550px) {
+		margin-bottom:180px;
+	}
 `;
 
 export const CategoriesContainer = styled.div`

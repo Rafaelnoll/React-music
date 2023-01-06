@@ -7,6 +7,11 @@ export const Page404Container = styled.div`
 	flex-direction:column;
 	width:100%;
 	height:100%;
+	margin-bottom:120px;
+
+	@media screen and (max-width: 550px) {
+		margin-bottom:180px;
+	}
 
 	strong{
 		font-size: 96px;
