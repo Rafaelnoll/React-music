@@ -46,8 +46,8 @@ export function MusicCard({ image, name, artist, duration, previewUrl, trackInde
 			<img src={image} />
 			<AiOutlineHeart className="like-button" />
 			<MusicCardTexts>
-				<span>{name}</span>
-				<span>{artist}</span>
+				<span translate="no">{name}</span>
+				<span translate="no">{artist}</span>
 			</MusicCardTexts>
 			<MusicCardOptions>
 				<span>{duration}</span>

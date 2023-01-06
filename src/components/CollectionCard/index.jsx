@@ -7,8 +7,8 @@ export function CollectionCard({album}) {
 	return (
 		<Link to={`/album/${album.albumId}`}>
 			<CollectionCardContainer backgroundImage={album.image}>
-				<strong>{album.name}</strong>
-				<span className="artist-name">{album.artist}</span>
+				<strong translate="no">{album.name}</strong>
+				<span className="artist-name" translate="no">{album.artist}</span>
 				<span className="number-of-likes">{album.totalOfTracks} Musics</span>
 				<button><AiFillPlayCircle /></button>
 			</CollectionCardContainer>
