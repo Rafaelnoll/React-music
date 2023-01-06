@@ -22,7 +22,7 @@ export function MusicsList({ tracks = [] }) {
 	}, []);
 
 	return (
-		<MusicsListContainer>
+		<MusicsListContainer isMarginActivated={state.currentTrack.track !== undefined}>
 			{tracks.map(({ track }, trackIndex) => (
 				<MusicCard
 					key={track.id}

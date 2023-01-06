@@ -9,4 +9,8 @@ export const AlbumsContainer = styled.div`
 		margin-bottom:16px;
 	}
 
+	@media (max-width: 980px){
+		margin-bottom:180px;
+	}
+
 `;
