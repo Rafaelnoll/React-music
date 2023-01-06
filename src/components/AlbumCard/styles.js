@@ -22,7 +22,13 @@ export const AlbumCardContainer = styled.div`
 	}
 
 	span{
-		color: rgba(255, 255, 255, 0.5);
+		color: rgba(255, 255, 255, 0.3);
 		font-size: 12px;
+	}
+
+	@media (max-width: 980px){
+		strong{
+			font-size:20px;
+		}
 	}
 `;

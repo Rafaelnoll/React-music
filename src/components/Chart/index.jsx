@@ -9,8 +9,8 @@ export function Chart({ chartImage, name, artist, time, chartId }) {
 			<ChartContainer>
 				<img src={chartImage} />
 				<ChartTexts>
-					<strong>{name}</strong>
-					<span className="artist">{artist}</span>
+					<strong translate="no">{name}</strong>
+					<span className="artist" translate="no">{artist}</span>
 					<span className="time">{time}</span>
 				</ChartTexts>
 				<ChartLikeButton>

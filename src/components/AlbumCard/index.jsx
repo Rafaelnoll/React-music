@@ -7,7 +7,7 @@ export function AlbumCard({ albumId, albumImage, name }) {
 		<Link to={`/album/${albumId}`}>
 			<AlbumCardContainer>
 				<img src={albumImage} />
-				<strong>{name}</strong>
+				<strong translate="no">{name}</strong>
 			</AlbumCardContainer>
 		</Link>
 	);

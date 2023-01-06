@@ -35,7 +35,9 @@ export const AlbumTemplateHeader = styled.div`
 			color:#fff;
 			font-size:40px;
 			font-weight:700;
+			text-align:center;
 		}
+
 	}
 
 	@media (max-width:980px) {
@@ -56,6 +58,10 @@ export const AlbumTemplateHeader = styled.div`
 
 		.text-box{
 		max-width:100%;
+
+		span{
+			font-size:22px;
+		}
 		}
 	}
 `;

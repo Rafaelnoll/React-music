@@ -17,6 +17,10 @@ export const TopChartContainer = styled.div`
 	@media (max-width: 980px){
 		flex-direction:column;
 
+		h2{
+			font-size:32px;
+		}
+
 		.top-charts{
 			flex:1;
 		}
@@ -26,6 +30,5 @@ export const TopChartContainer = styled.div`
 export const ChartsList = styled.div`
 	display:flex;
 	flex-direction:column;
-	justify-content:space-between;
 	gap:16px;
 `;

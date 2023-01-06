@@ -10,7 +10,11 @@ export const AlbumsContainer = styled.div`
 	}
 
 	@media (max-width: 980px){
-		margin-bottom:180px;
+		margin-bottom:220px;
+
+		h2{
+			font-size:32px;
+		}
 	}
 
 `;

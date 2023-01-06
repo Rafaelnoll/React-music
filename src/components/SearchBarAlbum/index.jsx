@@ -8,7 +8,7 @@ export function SearchBarAlbum({ id, name, image }) {
 			<S.SearchBarAlbumContainer>
 				<img src={image} />
 				<S.SearchBarAlbumTexts>
-					<span>{name}</span>
+					<span translate="no">{name}</span>
 				</S.SearchBarAlbumTexts>
 			</S.SearchBarAlbumContainer>
 		</Link>

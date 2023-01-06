@@ -17,7 +17,7 @@ export const SearchBarIconBox = styled.div`
 	justify-content:center;
 	cursor: pointer;
 	font-size:22px;
-	`;
+`;
 
 export const SearchBarInput = styled.input`
 	flex:1;
@@ -31,5 +31,9 @@ export const SearchBarInput = styled.input`
 	border:0;
 	&:focus{
 		outline:none;
+	}
+
+	@media (max-width: 980px){
+		font-size:20px;
 	}
 `;

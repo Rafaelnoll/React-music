@@ -5,9 +5,9 @@ export const MusicsListContainer = styled.div`
 	flex-direction:column;
 	margin:48px 0;
 	gap:12px;
-	margin-bottom:${({ isMarginActivated }) => isMarginActivated ? "120px": "32px"};
+	margin-bottom:${({ isMarginActivated }) => isMarginActivated ? "150px": "32px"};
 
 @media screen and (max-width: 550px) {
-	margin-bottom:${({ isMarginActivated }) => isMarginActivated ? "180px": "32px"};
+	margin-bottom:${({ isMarginActivated }) => isMarginActivated ? "220px": "32px"};
 }
 `;

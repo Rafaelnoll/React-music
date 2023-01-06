@@ -42,6 +42,22 @@ export const TrackInfo = styled.div`
 			color: rgba(255, 255, 255, 0.44);
 		}
 	}
+
+	@media (max-width: 980px){
+		img{
+			max-width:80px;
+		}
+
+		.track-texts{
+			strong{
+				font-size:18px;
+			}
+
+			span{
+				font-size:16px;
+			}
+		}
+	}
 `;
 
 export const TrackControls = styled.div`
@@ -65,6 +81,14 @@ export const TrackControls = styled.div`
 
 		.play-button{
 			color: #FACD66;
+		}
+	}
+
+	@media (max-width: 980px){
+		.control-buttons{
+			button{
+				font-size:38px;
+			}
 		}
 	}
 `;

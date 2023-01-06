@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ChartContainer = styled.div`
+	flex:1;
 	position:relative;
 	background-color:#1A1E1F;
 	border-radius:20px;
@@ -24,6 +25,10 @@ export const ChartContainer = styled.div`
 		width:100%;
 		flex-direction:column;
 		align-items:flex-start;
+
+		img{
+			max-width:200px;
+		}
 	}
 `;
 
@@ -41,7 +46,7 @@ export const ChartTexts = styled.div`
 
 	span.artist{
 		font-size:12px;
-		color: rgba(255, 255, 255, 0.5);
+		color: rgba(255, 255, 255, 0.8);
 		margin-bottom:8px;
 	}
 
@@ -51,6 +56,18 @@ export const ChartTexts = styled.div`
 
 	@media (max-width:980px) {
 		margin: 16px 0;
+
+		strong{
+			font-size:24px;
+		}
+
+		span.artist{
+		font-size:20px;
+	}
+
+	span.time{
+		font-size:18px;
+	}
 	}
 `;
 
@@ -70,6 +87,7 @@ export const ChartLikeButton = styled.button`
 			position:absolute;
 			top:10;
 			right:20px;
+			font-size:28px;
 		}
 	}
 `;

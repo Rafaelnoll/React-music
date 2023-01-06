@@ -33,6 +33,7 @@ export const AlbumActionButtonsContainer = styled.div`
 	@media (max-width:980px){
 		button{
 			width:100%;
+			font-size:24px;
 		}
 	}
 

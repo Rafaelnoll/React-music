@@ -27,6 +27,10 @@ export const MusicCardContainer = styled.div`
 		.like-button{
 			display:none;
 		}
+
+		img{
+			max-width:80px;
+		}
 	}
 `;
 
@@ -41,6 +45,7 @@ export const MusicCardTexts = styled.div`
 		gap:8px;
 		align-items:flex-start;
 		margin:0;
+		font-size: 22px;
 	}
 `;
 
@@ -58,5 +63,6 @@ export const MusicCardOptions = styled.div`
 		flex-direction:column-reverse;
 		gap:8px;
 		align-items:flex-end;
+		font-size:22px;
 	}
 `;

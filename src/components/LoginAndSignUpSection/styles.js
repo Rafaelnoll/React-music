@@ -36,4 +36,17 @@ strong{
 		background-color:#facd66;
 	}
 }
+
+	@media (max-width: 980px){
+		.buttons-container{
+
+			span{
+				font-size:22px;
+			}
+
+			button{
+				font-size:22px;
+			}
+		}
+	}
 `;

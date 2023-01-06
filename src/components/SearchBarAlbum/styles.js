@@ -22,6 +22,15 @@ export const SearchBarAlbumContainer = styled.div`
 
 	&:active{
 		opacity:0.6;
+		background-color:black;
+	}
+
+	@media (max-width: 980px){
+		font-size:24px;
+
+		img{
+			max-width:80px;
+		}
 	}
 `;
 
