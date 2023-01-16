@@ -4,6 +4,8 @@
 </h1>
 
 <h4 align="center">A website inspired by spotify where you can preview songs and add albums to your personalized collection.</h4>
+<h4 align="center">Observation: This website has been made for the sole purpose of study</h4>
+<h4 align="center"><a href="https://react-music-khaki.vercel.app/">Go to the website</a></h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -69,6 +71,7 @@ React Music use a node api to work - [React Music API](https://github.com/Rafael
 
 - [Free Play](https://github.com/Rafaelnoll/FreePlay) - A website to find free games to play
 - [Waiter App API](https://github.com/Rafaelnoll/waiter-app-api) - An API to use with another project called Waiter App to be used by waiters to send an order to cooks
+
 
 ## License
 
