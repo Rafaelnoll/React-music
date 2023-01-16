@@ -6,17 +6,15 @@ import {
 	AlbumTemplateHeader,
 } from "./styles";
 import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAlbum } from "../../utils/getAlbum";
 import { toAlbumTime } from "../../utils/toAlbumTime";
 import api from "../../api";
 import { AlbumActionButtons } from "../../components/AlbumActionButtons";
-import { AlbumsContext } from "../../contexts/AlbumsContext";
 
 export function Album() {
 	const [album, setAlbum] = useState({});
 	const [isLoaded, setIsLoaded] = useState(false);
-	const { albums } = useContext(AlbumsContext);
 	const { id } = useParams();
 	const navigate = useNavigate();
 
@@ -32,7 +30,7 @@ export function Album() {
 		}
 
 		loadAlbum();
-	}, [albums]);
+	}, [album]);
 
 	async function handleAddInCollections() {
 		await api.post("/collection/album", {
