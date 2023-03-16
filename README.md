@@ -70,8 +70,6 @@ React Music use a node api to work - [React Music API](https://github.com/Rafael
 ## You may also like...
 
 - [Free Play](https://github.com/Rafaelnoll/FreePlay) - A website to find free games to play
-- [Waiter App API](https://github.com/Rafaelnoll/waiter-app-api) - An API to use with another project called Waiter App to be used by waiters to send an order to cooks
-
 
 ## License
 
